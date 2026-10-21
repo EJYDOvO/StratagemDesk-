@@ -1,0 +1,59 @@
+name: macOS build and contracts
+on:
+  push:
+    branches: [main]
+    paths: ['Sources/**', 'Tests/**', 'Package.swift', 'Info.plist', 'StratagemDesk.xcodeproj/**', 'scripts/build.sh', 'scripts/test.sh', '.github/workflows/macos.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: macos-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  macos:
+    runs-on: macos-15
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Core and native process contracts
+        run: scripts/test.sh
+      - name: Build macOS arm64 Release
+        run: scripts/build.sh
+      - name: Verify bundled artwork and package
+        run: |
+          test -d build/Release/StratagemDeskPublic.app
+          cp LICENSE build/Release/StratagemDeskPublic.app/Contents/Resources/LICENSE.txt
+          cp THIRD_PARTY.md build/Release/StratagemDeskPublic.app/Contents/Resources/THIRD_PARTY.md
+          codesign --force --deep --sign - build/Release/StratagemDeskPublic.app
+          codesign --verify --deep --strict build/Release/StratagemDeskPublic.app
+          python3 - <<'PY'
+          import hashlib, json, pathlib
+          app = pathlib.Path('build/Release/StratagemDeskPublic.app')
+          packs = list(app.rglob('Artwork/sources.json'))
+          assert len(packs) == 1, packs
+          manifest = json.loads(packs[0].read_text())
+          assert len(manifest['entries']) == 8
+          for item in manifest['entries']:
+              file = item['file']
+              assert pathlib.Path(file).name == file
+              assert hashlib.sha256((packs[0].parent / file).read_bytes()).hexdigest() == item['sha256']
+          PY
+          ditto -c -k --sequesterRsrc --keepParent build/Release/StratagemDeskPublic.app build/StratagemDeskPublic-macos-arm64.zip
+          cd build
+          shasum -a 256 StratagemDeskPublic-macos-arm64.zip > SHA256SUMS-macos.txt
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: macos-validation-${{ github.sha }}
+          path: |
+            build/swift-build.log
+            build/swift-test.log
+            build/release-build.log
+          retention-days: 14
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: StratagemDeskPublic-macos-arm64-${{ github.sha }}
+          path: |
+            build/StratagemDeskPublic-macos-arm64.zip
+            build/SHA256SUMS-macos.txt
+          retention-days: 14

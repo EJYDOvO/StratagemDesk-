@@ -1,0 +1,2 @@
+# Preserve hash-verified upstream artwork byte-for-byte.
+Sources/StratagemCore/Artwork/*.svg -text -whitespace

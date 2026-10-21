@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "license": "MIT",
+  "author": "EJYDOvO",
+  "note": "Original geometric artwork created for this public edition; bundled with both applications.",
+  "entries": [
+    {
+      "id": "desk.terminal",
+      "name": "Terminal",
+      "file": "desk.terminal.svg",
+      "sha256": "106bbb3be7e74bedd4583e2eb99f40d7eb365b9783ce60b456e54edfc3a87708",
+      "origin": "original-public-edition",
+      "license": "MIT",
+      "author": "EJYDOvO"
+    },
+    {
+      "id": "desk.home",
+      "name": "Home Folder",
+      "file": "desk.home.svg",
+      "sha256": "7d53f97359a7cb6d9e5b2cfe155c2e515f2859a4552000e9443f0d0e5104f259",
+      "origin": "original-public-edition",
+      "license": "MIT",
+      "author": "EJYDOvO"
+    },
+    {
+      "id": "desk.calculate",
+      "name": "Calculator",
+      "file": "desk.calculate.svg",
+      "sha256": "90b78112de4aea08114e5587585ed98d14e6ee359a85638659255ee6601a65e5",
+      "origin": "original-public-edition",
+      "license": "MIT",
+      "author": "EJYDOvO"
+    },
+    {
+      "id": "desk.files",
+      "name": "File Browser",
+      "file": "desk.files.svg",
+      "sha256": "e6a1e00b927e32e2a6bd6381b2de495f89677e9772b61832f7103d320615394a",
+      "origin": "original-public-edition",
+      "license": "MIT",
+      "author": "EJYDOvO"
+    },
+    {
+      "id": "desk.clock",
+      "name": "Clock",
+      "file": "desk.clock.svg",
+      "sha256": "393ad5a1d00158d2a3ae0e4a31bc9f5ad191bc91350d1c1b99f98c250f3042b9",
+      "origin": "original-public-edition",
+      "license": "MIT",
+      "author": "EJYDOvO"
+    },
+    {
+      "id": "desk.status",
+      "name": "Status",
+      "file": "desk.status.svg",
+      "sha256": "09420203820697272b7db62a7e26a92eefb9ea93787a0793c652f1ee159bc025",
+      "origin": "original-public-edition",
+      "license": "MIT",
+      "author": "EJYDOvO"
+    },
+    {
+      "id": "desk.pause",
+      "name": "Pause",
+      "file": "desk.pause.svg",
+      "sha256": "e6a21e9b0bca1f7b7f57cc9ae8df194a5112bae42a32de99819aead3e46cceb9",
+      "origin": "original-public-edition",
+      "license": "MIT",
+      "author": "EJYDOvO"
+    },
+    {
+      "id": "desk.workflow",
+      "name": "Workflow",
+      "file": "desk.workflow.svg",
+      "sha256": "f1fe0fb636691626e73f2013e501e7ab0f9bc93ed0f1d32884b2d1b6794e8ef5",
+      "origin": "original-public-edition",
+      "license": "MIT",
+      "author": "EJYDOvO"
+    }
+  ]
+}

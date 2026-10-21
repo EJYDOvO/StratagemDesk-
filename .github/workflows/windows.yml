@@ -1,0 +1,80 @@
+name: Windows build and contracts
+on:
+  push:
+    branches: [main]
+    paths: ['Windows/**', 'Sources/StratagemCore/Resources/**', 'Sources/StratagemCore/Artwork/**', '.github/workflows/windows.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: windows-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Core contracts
+        run: dotnet test Windows/StratagemDesk.Core.Tests -c Release --logger "trx;LogFileName=core.trx" --results-directory build/windows-tests
+      - name: Win32 process and keyboard lifecycle
+        run: dotnet test Windows/StratagemDesk.Native.Tests -c Release --logger "trx;LogFileName=native.trx" --results-directory build/windows-tests
+      - name: Publish Windows x64 application
+        if: hashFiles('Windows/StratagemDesk.App/StratagemDesk.App.csproj') != ''
+        run: dotnet publish Windows/StratagemDesk.App -c Release -r win-x64 --self-contained true -o build/windows-x64
+      - name: WPF controller smoke
+        if: hashFiles('Windows/StratagemDesk.App/StratagemDesk.App.csproj') != ''
+        shell: pwsh
+        run: |
+          $process = Start-Process build/windows-x64/StratagemDeskPublic.exe -ArgumentList @('--smoke', '--configuration', "$env:RUNNER_TEMP/stratagem-smoke/configuration.json") -PassThru
+          if (-not $process.WaitForExit(60000)) { $process.Kill($true); throw 'WPF smoke timeout' }
+          if ($process.ExitCode -ne 0) { throw "WPF smoke failed: $($process.ExitCode)" }
+          $report = Get-Content "$env:RUNNER_TEMP/stratagem-smoke/smoke.json" -Raw | ConvertFrom-Json
+          if (-not $report.passed) { throw 'WPF controller checks failed' }
+          New-Item build/windows-tests -ItemType Directory -Force | Out-Null
+          Copy-Item "$env:RUNNER_TEMP/stratagem-smoke/*" build/windows-tests -Force -Recurse
+      - name: Package application
+        if: hashFiles('Windows/StratagemDesk.App/StratagemDesk.App.csproj') != ''
+        shell: pwsh
+        run: |
+          $licenseDir = New-Item build/windows-x64/licenses -ItemType Directory -Force
+          $sdkNotices = Get-ChildItem $env:DOTNET_ROOT -File | Where-Object { $_.Name -match 'license|notice' }
+          foreach ($file in $sdkNotices) { Copy-Item $file.FullName (Join-Path $licenseDir.FullName ("dotnet-sdk-" + $file.Name)) }
+          foreach ($package in @('microsoft.netcore.app.runtime.win-x64', 'microsoft.windowsdesktop.app.runtime.win-x64')) {
+            $root = Join-Path $env:USERPROFILE ".nuget/packages/$package"
+            if (Test-Path $root) {
+              foreach ($version in Get-ChildItem $root -Directory) {
+                foreach ($file in (Get-ChildItem $version.FullName -File | Where-Object { $_.Name -match 'license|notice' })) {
+                  Copy-Item $file.FullName (Join-Path $licenseDir.FullName ("$package-" + $version.Name + '-' + $file.Name))
+                }
+              }
+            }
+          }
+          if ((Get-ChildItem $licenseDir -File).Count -lt 2) { throw 'Runtime license/notice files missing' }
+          @{
+            version = '0.1.0-preview.1'
+            sourceCommit = $env:GITHUB_SHA
+            runUrl = "https://github.com/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID"
+            platform = 'win-x64'
+            selfContained = $true
+          } | ConvertTo-Json | Set-Content build/windows-x64/BUILD.json
+          Compress-Archive -Path build/windows-x64/* -DestinationPath build/StratagemDeskPublic-windows-x64.zip
+          $digest = (Get-FileHash build/StratagemDeskPublic-windows-x64.zip -Algorithm SHA256).Hash.ToLowerInvariant()
+          "$digest  StratagemDeskPublic-windows-x64.zip" | Set-Content build/SHA256SUMS-windows.txt
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: windows-validation-${{ github.sha }}
+          path: build/windows-tests
+          retention-days: 14
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: success() && hashFiles('Windows/StratagemDesk.App/StratagemDesk.App.csproj') != ''
+        with:
+          name: StratagemDeskPublic-windows-x64-${{ github.sha }}
+          path: |
+            build/StratagemDeskPublic-windows-x64.zip
+            build/SHA256SUMS-windows.txt
+          retention-days: 14

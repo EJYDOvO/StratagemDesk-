@@ -1,0 +1,16 @@
+.build/
+build/
+.DS_Store
+*.xcuserstate
+xcuserdata/
+**/bin/
+**/obj/
+**/TestResults/
+.env
+.env.*
+*.pem
+*.p12
+*.pfx
+configuration.json
+last-run.json
+*.backup-*

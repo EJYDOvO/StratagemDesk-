@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType><TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF><UseWindowsForms>true</UseWindowsForms><EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <ImplicitUsings>disable</ImplicitUsings><AssemblyName>StratagemDeskPublic</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../StratagemDesk.Core/StratagemDesk.Core.csproj" />
+    <ProjectReference Include="../StratagemDesk.Native/StratagemDesk.Native.csproj" />
+    <PackageReference Include="SharpVectors.Wpf" Version="1.8.6" />
+    <Content Include="../../LICENSE" Link="LICENSE.txt" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../THIRD_PARTY.md" Link="THIRD_PARTY.md" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../THIRD_PARTY.txt" Link="THIRD_PARTY.txt" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../README.md" Link="README.md" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../Sources/StratagemCore/Artwork/**/*" Link="Artwork/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

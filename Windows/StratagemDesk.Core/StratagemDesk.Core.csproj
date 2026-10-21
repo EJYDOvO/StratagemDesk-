@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <EmbeddedResource Include="../../Sources/StratagemCore/Resources/builtins.json" LogicalName="builtins.json" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,52 @@
+{
+  "icons": {
+    "desk.terminal": "desk.terminal.svg",
+    "desk.home": "desk.home.svg",
+    "desk.calculate": "desk.calculate.svg",
+    "desk.files": "desk.files.svg",
+    "desk.clock": "desk.clock.svg",
+    "desk.status": "desk.status.svg",
+    "desk.pause": "desk.pause.svg",
+    "desk.workflow": "desk.workflow.svg"
+  },
+  "defaultIcons": {
+    "desk.terminal": "terminal",
+    "desk.home": "house",
+    "desk.calculate": "plus.forwardslash.minus",
+    "desk.files": "folder",
+    "desk.clock": "clock",
+    "desk.status": "checkmark.circle",
+    "desk.pause": "pause.circle",
+    "desk.workflow": "arrow.triangle.branch"
+  },
+  "accentColors": {
+    "desk.terminal": "b6cce5",
+    "desk.home": "b6cce5",
+    "desk.calculate": "b6cce5",
+    "desk.files": "b6cce5",
+    "desk.clock": "b6cce5",
+    "desk.status": "b6cce5",
+    "desk.pause": "b6cce5",
+    "desk.workflow": "b6cce5"
+  },
+  "displayNames": {
+    "desk.terminal": "Terminal",
+    "desk.home": "Home Folder",
+    "desk.calculate": "Calculator",
+    "desk.files": "File Browser",
+    "desk.clock": "Clock",
+    "desk.status": "Status",
+    "desk.pause": "Pause",
+    "desk.workflow": "Workflow"
+  },
+  "catalogNames": {
+    "desk.terminal": "Terminal",
+    "desk.home": "Home Folder",
+    "desk.calculate": "Calculator",
+    "desk.files": "File Browser",
+    "desk.clock": "Clock",
+    "desk.status": "Status",
+    "desk.pause": "Pause",
+    "desk.workflow": "Workflow"
+  }
+}

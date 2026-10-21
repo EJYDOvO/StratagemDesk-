@@ -1,0 +1,130 @@
+[
+  {
+    "id": "desk.terminal",
+    "name": "Terminal",
+    "sequence": [
+      "up",
+      "right",
+      "down",
+      "left"
+    ],
+    "category": "Desktop",
+    "icon": "terminal",
+    "description": "Original desktop demonstration. Review and configure before enabling.",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "desk.home",
+    "name": "Home Folder",
+    "sequence": [
+      "left",
+      "up",
+      "right",
+      "down"
+    ],
+    "category": "Desktop",
+    "icon": "house",
+    "description": "Original desktop demonstration. Review and configure before enabling.",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "desk.calculate",
+    "name": "Calculator",
+    "sequence": [
+      "right",
+      "up",
+      "left",
+      "down"
+    ],
+    "category": "Desktop",
+    "icon": "plus.forwardslash.minus",
+    "description": "Original desktop demonstration. Review and configure before enabling.",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "desk.files",
+    "name": "File Browser",
+    "sequence": [
+      "down",
+      "left",
+      "up",
+      "right"
+    ],
+    "category": "Desktop",
+    "icon": "folder",
+    "description": "Original desktop demonstration. Review and configure before enabling.",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "desk.clock",
+    "name": "Clock",
+    "sequence": [
+      "up",
+      "up",
+      "right",
+      "down"
+    ],
+    "category": "Desktop",
+    "icon": "clock",
+    "description": "Original desktop demonstration. Review and configure before enabling.",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "desk.status",
+    "name": "Status",
+    "sequence": [
+      "down",
+      "up",
+      "right",
+      "left"
+    ],
+    "category": "Desktop",
+    "icon": "checkmark.circle",
+    "description": "Original desktop demonstration. Review and configure before enabling.",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "desk.pause",
+    "name": "Pause",
+    "sequence": [
+      "left",
+      "left",
+      "down",
+      "right"
+    ],
+    "category": "Desktop",
+    "icon": "pause.circle",
+    "description": "Original desktop demonstration. Review and configure before enabling.",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "desk.workflow",
+    "name": "Workflow",
+    "sequence": [
+      "right",
+      "right",
+      "down",
+      "up"
+    ],
+    "category": "Desktop",
+    "icon": "arrow.triangle.branch",
+    "description": "Original desktop demonstration. Review and configure before enabling.",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  }
+]
