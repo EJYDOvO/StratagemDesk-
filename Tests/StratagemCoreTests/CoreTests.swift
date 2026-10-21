@@ -119,17 +119,23 @@ final class CoreTests: XCTestCase {
         let directory = try XCTUnwrap(BundledArtwork.directory)
         let index = try XCTUnwrap(JSONSerialization.jsonObject(with: Data(contentsOf: directory.appendingPathComponent("index.json"))) as? [String: [String: String]])
         let sources = try XCTUnwrap(JSONSerialization.jsonObject(with: Data(contentsOf: directory.appendingPathComponent("sources.json"))) as? [String: Any])
-        let entries = try XCTUnwrap(sources["entries"] as? [[String: String]])
+        let entries = try XCTUnwrap(sources["entries"] as? [[String: Any]])
         let builtins = try BuiltinCatalog.load()
-        XCTAssertEqual(Set(entries.compactMap { $0["id"] }), Set(builtins.map(\.id)))
+        XCTAssertEqual(Set(entries.compactMap { $0["id"] as? String }), Set(builtins.map(\.id)))
         XCTAssertEqual(index["icons"]?.count, builtins.count)
         for entry in entries {
-            let id = try XCTUnwrap(entry["id"]), filename = try XCTUnwrap(entry["file"])
+            let id = try XCTUnwrap(entry["id"] as? String), filename = try XCTUnwrap(entry["file"] as? String)
             XCTAssertEqual(filename, URL(fileURLWithPath: filename).lastPathComponent)
             XCTAssertEqual(index["icons"]?[id], filename)
             XCTAssertEqual(index["defaultIcons"]?[id], builtins.first { $0.id == id }?.icon)
+            if id.hasPrefix("zero.") {
+                XCTAssertEqual(entry["projectMitApplies"] as? Bool, false)
+                XCTAssertEqual(entry["license"] as? String, "LicenseRef-ThirdParty-Game-Content")
+            } else {
+                XCTAssertEqual(entry["license"] as? String, "MIT")
+            }
             let data = try Data(contentsOf: directory.appendingPathComponent(filename))
-            XCTAssertEqual(SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined(), entry["sha256"])
+            XCTAssertEqual(SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined(), entry["sha256"] as? String)
         }
     }
     func testBulkEnablePreservesMappingsAndApprovalsAcrossEntryKinds() throws {
