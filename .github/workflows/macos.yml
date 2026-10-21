@@ -2,7 +2,7 @@ name: macOS build and contracts
 on:
   push:
     branches: [main]
-    paths: ['Sources/**', 'Tests/**', 'Package.swift', 'Info.plist', 'StratagemDesk.xcodeproj/**', 'scripts/build.sh', 'scripts/test.sh', 'LICENSE', 'THIRD_PARTY.md', '.github/workflows/macos.yml']
+    paths: ['Sources/**', 'Tests/**', 'Package.swift', 'Info.plist', 'StratagemDesk.xcodeproj/**', 'scripts/build.sh', 'scripts/test.sh', 'LICENSE', 'THIRD_PARTY.md', '.gitattributes', '.github/workflows/macos.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -35,6 +35,8 @@ jobs:
           assert len(manifest['entries']) == 123
           assert (packs[0].parent / 'GAME_CONTENT_NOTICE.md').is_file()
           assert (packs[0].parent / 'game-data/StratagemZero-LICENSE.txt').is_file()
+          provenance = json.loads((packs[0].parent / 'game-data/sources.json').read_text())
+          assert hashlib.sha256((packs[0].parent / 'game-data/stratagems-upstream.json').read_bytes()).hexdigest() == provenance['upstreamSha256']
           for item in manifest['entries']:
               file = item['file']
               assert pathlib.Path(file).name == file

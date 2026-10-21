@@ -2,7 +2,7 @@ name: Windows build and contracts
 on:
   push:
     branches: [main]
-    paths: ['Windows/**', 'Sources/StratagemCore/Resources/**', 'Sources/StratagemCore/Artwork/**', 'LICENSE', 'THIRD_PARTY.md', '.github/workflows/windows.yml']
+    paths: ['Windows/**', 'Sources/StratagemCore/Resources/**', 'Sources/StratagemCore/Artwork/**', 'LICENSE', 'THIRD_PARTY.md', '.gitattributes', '.github/workflows/windows.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -54,6 +54,14 @@ jobs:
             }
           }
           if ((Get-ChildItem $licenseDir -File).Count -lt 2) { throw 'Runtime license/notice files missing' }
+          $source = Get-Content build/windows-x64/Artwork/game-data/sources.json -Raw | ConvertFrom-Json
+          $sourceHash = (Get-FileHash build/windows-x64/Artwork/game-data/stratagems-upstream.json -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($sourceHash -ne $source.upstreamSha256) { throw 'Bundled upstream data hash mismatch' }
+          $catalogHash = (Get-FileHash Sources/StratagemCore/Resources/builtins.json -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($catalogHash -ne $source.catalogSha256) { throw 'Catalog source hash mismatch' }
+          foreach ($notice in @('GAME_CONTENT_NOTICE.md', 'NOTICE.txt', 'LICENSE.txt', 'ORIGINAL-DESKTOP-LICENSE.txt', 'game-data/StratagemZero-LICENSE.txt')) {
+            if (-not (Test-Path "build/windows-x64/Artwork/$notice")) { throw "Missing copyright notice: $notice" }
+          }
           @{
             version = '0.1.0-preview.2'
             sourceCommit = $env:GITHUB_SHA

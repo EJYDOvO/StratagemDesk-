@@ -1,2 +1,2 @@
-# Preserve hash-verified upstream artwork byte-for-byte.
-Sources/StratagemCore/Artwork/*.svg -text -whitespace
+# Keep bundled source files and their pinned hashes identical across platforms.
+* text=auto eol=lf
