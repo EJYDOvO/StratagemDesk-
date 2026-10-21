@@ -1,21 +1,9 @@
-MIT License
+ARTWORK LICENSE SCOPE — MIXED CONTENT
 
-Copyright (c) 2026 EJYDOvO
+Only the eight original desk.*.svg files are licensed under the project MIT license.
+Full original-artwork terms: ORIGINAL-DESKTOP-LICENSE.txt.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+The 115 zero.*.svg game icons, 115 game catalog entries in Resources/builtins.json,
+game-data/ and third-party game metadata are EXCLUDED from the project MIT license.
+They retain their original rights and upstream terms. No additional license is granted.
+See GAME_CONTENT_NOTICE.md, NOTICE.txt, game-icons-sources.json and game-data/.

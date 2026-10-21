@@ -101,8 +101,14 @@ public static class Catalog
 {
     public static List<Stratagem> Load()
     {
-        using var stream = typeof(Catalog).Assembly.GetManifestResourceStream("builtins.json")!;
-        return JsonSerializer.Deserialize<List<Stratagem>>(stream, Json.Options)!;
+        var entries = new List<Stratagem>();
+        foreach (var name in new[] { "builtins.json", "desktop-examples.json" })
+        {
+            using var stream = typeof(Catalog).Assembly.GetManifestResourceStream(name)
+                ?? throw new InvalidDataException($"内置战备资源缺失：{name}");
+            entries.AddRange(JsonSerializer.Deserialize<List<Stratagem>>(stream, Json.Options)!);
+        }
+        return entries;
     }
     public static Configuration Defaults(IReadOnlyList<Stratagem> builtins)
     {

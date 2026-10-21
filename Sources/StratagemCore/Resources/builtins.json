@@ -1,128 +1,2009 @@
 [
   {
-    "id": "desk.terminal",
-    "name": "Terminal",
+    "id": "zero.orbital-precision-strike",
+    "name": "Orbital Precision Strike",
     "sequence": [
-      "up",
+      "right",
+      "right",
+      "up"
+    ],
+    "category": "Orbital",
+    "icon": "scope",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.orbital-gatling-barrage",
+    "name": "Orbital Gatling Barrage",
+    "sequence": [
       "right",
       "down",
-      "left"
-    ],
-    "category": "Desktop",
-    "icon": "terminal",
-    "description": "Original desktop demonstration. Review and configure before enabling.",
-    "enabled": false,
-    "confirmation": true,
-    "steps": []
-  },
-  {
-    "id": "desk.home",
-    "name": "Home Folder",
-    "sequence": [
       "left",
       "up",
-      "right",
-      "down"
+      "up"
     ],
-    "category": "Desktop",
-    "icon": "house",
-    "description": "Original desktop demonstration. Review and configure before enabling.",
+    "category": "Orbital",
+    "icon": "scope",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
     "enabled": false,
     "confirmation": true,
     "steps": []
   },
   {
-    "id": "desk.calculate",
-    "name": "Calculator",
+    "id": "zero.orbital-gas-strike",
+    "name": "Orbital Gas Strike",
     "sequence": [
       "right",
-      "up",
-      "left",
-      "down"
-    ],
-    "category": "Desktop",
-    "icon": "plus.forwardslash.minus",
-    "description": "Original desktop demonstration. Review and configure before enabling.",
-    "enabled": false,
-    "confirmation": true,
-    "steps": []
-  },
-  {
-    "id": "desk.files",
-    "name": "File Browser",
-    "sequence": [
-      "down",
-      "left",
-      "up",
-      "right"
-    ],
-    "category": "Desktop",
-    "icon": "folder",
-    "description": "Original desktop demonstration. Review and configure before enabling.",
-    "enabled": false,
-    "confirmation": true,
-    "steps": []
-  },
-  {
-    "id": "desk.clock",
-    "name": "Clock",
-    "sequence": [
-      "up",
-      "up",
       "right",
-      "down"
-    ],
-    "category": "Desktop",
-    "icon": "clock",
-    "description": "Original desktop demonstration. Review and configure before enabling.",
-    "enabled": false,
-    "confirmation": true,
-    "steps": []
-  },
-  {
-    "id": "desk.status",
-    "name": "Status",
-    "sequence": [
-      "down",
-      "up",
-      "right",
-      "left"
-    ],
-    "category": "Desktop",
-    "icon": "checkmark.circle",
-    "description": "Original desktop demonstration. Review and configure before enabling.",
-    "enabled": false,
-    "confirmation": true,
-    "steps": []
-  },
-  {
-    "id": "desk.pause",
-    "name": "Pause",
-    "sequence": [
-      "left",
-      "left",
       "down",
       "right"
     ],
-    "category": "Desktop",
-    "icon": "pause.circle",
-    "description": "Original desktop demonstration. Review and configure before enabling.",
+    "category": "Orbital",
+    "icon": "scope",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
     "enabled": false,
     "confirmation": true,
     "steps": []
   },
   {
-    "id": "desk.workflow",
-    "name": "Workflow",
+    "id": "zero.orbital-120mm-he-barrage",
+    "name": "Orbital 120mm HE Barrage",
+    "sequence": [
+      "right",
+      "right",
+      "down",
+      "left",
+      "right",
+      "down"
+    ],
+    "category": "Orbital",
+    "icon": "scope",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.orbital-airburst-strike",
+    "name": "Orbital Airburst Strike",
+    "sequence": [
+      "right",
+      "right",
+      "right"
+    ],
+    "category": "Orbital",
+    "icon": "scope",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.orbital-smoke-strike",
+    "name": "Orbital Smoke Strike",
     "sequence": [
       "right",
       "right",
       "down",
       "up"
     ],
-    "category": "Desktop",
-    "icon": "arrow.triangle.branch",
-    "description": "Original desktop demonstration. Review and configure before enabling.",
+    "category": "Orbital",
+    "icon": "scope",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.orbital-ems-strike",
+    "name": "Orbital EMS Strike",
+    "sequence": [
+      "right",
+      "right",
+      "left",
+      "down"
+    ],
+    "category": "Orbital",
+    "icon": "scope",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.orbital-380mm-he-barrage",
+    "name": "Orbital 380mm HE Barrage",
+    "sequence": [
+      "right",
+      "down",
+      "up",
+      "up",
+      "left",
+      "down",
+      "down"
+    ],
+    "category": "Orbital",
+    "icon": "scope",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.orbital-walking-barrage",
+    "name": "Orbital Walking Barrage",
+    "sequence": [
+      "right",
+      "down",
+      "right",
+      "down",
+      "right",
+      "down"
+    ],
+    "category": "Orbital",
+    "icon": "scope",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.orbital-laser",
+    "name": "Orbital Laser",
+    "sequence": [
+      "right",
+      "down",
+      "up",
+      "right",
+      "down"
+    ],
+    "category": "Orbital",
+    "icon": "scope",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.orbital-napalm-barrage",
+    "name": "Orbital Napalm Barrage",
+    "sequence": [
+      "right",
+      "right",
+      "down",
+      "left",
+      "right",
+      "up"
+    ],
+    "category": "Orbital",
+    "icon": "scope",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.orbital-railcannon-strike",
+    "name": "Orbital Railcannon Strike",
+    "sequence": [
+      "right",
+      "up",
+      "down",
+      "down",
+      "right"
+    ],
+    "category": "Orbital",
+    "icon": "scope",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.eagle-gas-airstrike",
+    "name": "Eagle Gas Airstrike",
+    "sequence": [
+      "up",
+      "right",
+      "left",
+      "right"
+    ],
+    "category": "Eagle",
+    "icon": "airplane",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.eagle-strafing-run",
+    "name": "Eagle Strafing Run",
+    "sequence": [
+      "up",
+      "right",
+      "right"
+    ],
+    "category": "Eagle",
+    "icon": "airplane",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.eagle-airstrike",
+    "name": "Eagle Airstrike",
+    "sequence": [
+      "up",
+      "right",
+      "down",
+      "right"
+    ],
+    "category": "Eagle",
+    "icon": "airplane",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.eagle-cluster-bomb",
+    "name": "Eagle Cluster Bomb",
+    "sequence": [
+      "up",
+      "right",
+      "down",
+      "down",
+      "right"
+    ],
+    "category": "Eagle",
+    "icon": "airplane",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.eagle-smoke-strike",
+    "name": "Eagle Smoke Strike",
+    "sequence": [
+      "up",
+      "right",
+      "up",
+      "down"
+    ],
+    "category": "Eagle",
+    "icon": "airplane",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.eagle-napalm-airstrike",
+    "name": "Eagle Napalm Airstrike",
+    "sequence": [
+      "up",
+      "right",
+      "down",
+      "up"
+    ],
+    "category": "Eagle",
+    "icon": "airplane",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.eagle-110mm-rocket-pods",
+    "name": "Eagle 110mm Rocket Pods",
+    "sequence": [
+      "up",
+      "right",
+      "up",
+      "left"
+    ],
+    "category": "Eagle",
+    "icon": "airplane",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.eagle-500kg-bomb",
+    "name": "Eagle 500kg Bomb",
+    "sequence": [
+      "up",
+      "right",
+      "down",
+      "down",
+      "down"
+    ],
+    "category": "Eagle",
+    "icon": "airplane",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.mg-43-machine-gun",
+    "name": "MG-43 Machine Gun",
+    "sequence": [
+      "down",
+      "left",
+      "down",
+      "up",
+      "right"
+    ],
+    "category": "Equipment",
+    "icon": "shippingbox",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.eat-17-expendable-anti-tank",
+    "name": "EAT-17 Expendable Anti-Tank",
+    "sequence": [
+      "down",
+      "down",
+      "left",
+      "up",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.m-105-stalwart",
+    "name": "M-105 Stalwart",
+    "sequence": [
+      "down",
+      "left",
+      "down",
+      "up",
+      "up",
+      "left"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.las-98-laser-cannon",
+    "name": "LAS-98 Laser Cannon",
+    "sequence": [
+      "down",
+      "left",
+      "down",
+      "up",
+      "left"
+    ],
+    "category": "Equipment",
+    "icon": "shippingbox",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.apw-1-anti-materiel-rifle",
+    "name": "APW-1 Anti-Materiel Rifle",
+    "sequence": [
+      "down",
+      "left",
+      "right",
+      "up",
+      "down"
+    ],
+    "category": "Equipment",
+    "icon": "shippingbox",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.gr-8-recoilless-rifle",
+    "name": "GR-8 Recoilless Rifle",
+    "sequence": [
+      "down",
+      "left",
+      "right",
+      "right",
+      "left"
+    ],
+    "category": "Equipment",
+    "icon": "shippingbox",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.gl-21-grenade-launcher",
+    "name": "GL-21 Grenade Launcher",
+    "sequence": [
+      "down",
+      "left",
+      "up",
+      "left",
+      "down"
+    ],
+    "category": "Equipment",
+    "icon": "shippingbox",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.flam-40-flamethrower",
+    "name": "FLAM-40 Flamethrower",
+    "sequence": [
+      "down",
+      "left",
+      "up",
+      "down",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.mg-206-heavy-machine-gun",
+    "name": "MG-206 Heavy Machine Gun",
+    "sequence": [
+      "down",
+      "left",
+      "up",
+      "down",
+      "down"
+    ],
+    "category": "Equipment",
+    "icon": "shippingbox",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.ac-8-autocannon",
+    "name": "AC-8 Autocannon",
+    "sequence": [
+      "down",
+      "left",
+      "down",
+      "up",
+      "up",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.arc-3-arc-thrower",
+    "name": "ARC-3 Arc Thrower",
+    "sequence": [
+      "down",
+      "right",
+      "down",
+      "up",
+      "left",
+      "left"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.las-99-quasar-cannon",
+    "name": "LAS-99 Quasar Cannon",
+    "sequence": [
+      "down",
+      "down",
+      "up",
+      "left",
+      "right"
+    ],
+    "category": "Equipment",
+    "icon": "shippingbox",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.rl-77-airburst-rocket-launcher",
+    "name": "RL-77 Airburst Rocket Launcher",
+    "sequence": [
+      "down",
+      "up",
+      "up",
+      "left",
+      "right"
+    ],
+    "category": "Equipment",
+    "icon": "shippingbox",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.mls-4x-commando",
+    "name": "MLS-4X Commando",
+    "sequence": [
+      "down",
+      "left",
+      "up",
+      "down",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.faf-14-spear",
+    "name": "FAF-14 Spear",
+    "sequence": [
+      "down",
+      "down",
+      "up",
+      "down",
+      "down"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.rs-422-railgun",
+    "name": "RS-422 Railgun",
+    "sequence": [
+      "down",
+      "right",
+      "down",
+      "up",
+      "left",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.sta-x3-w-a-s-p-launcher",
+    "name": "StA-X3 W.A.S.P. Launcher",
+    "sequence": [
+      "down",
+      "down",
+      "up",
+      "down",
+      "right"
+    ],
+    "category": "Equipment",
+    "icon": "shippingbox",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.cqc-20-breaching-hammer",
+    "name": "CQC-20 Breaching Hammer",
+    "sequence": [
+      "down",
+      "left",
+      "right",
+      "left",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.plas-45-epoch",
+    "name": "PLAS-45 Epoch",
+    "sequence": [
+      "down",
+      "left",
+      "up",
+      "left",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.mgx-42-bullet-storm",
+    "name": "MGX-42 Bullet Storm",
+    "sequence": [
+      "down",
+      "left",
+      "down",
+      "right",
+      "up",
+      "left"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.s-11-speargun",
+    "name": "S-11 Speargun",
+    "sequence": [
+      "down",
+      "right",
+      "down",
+      "left",
+      "up",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.cqc-9-defoliation-tool",
+    "name": "CQC-9 Defoliation Tool",
+    "sequence": [
+      "down",
+      "left",
+      "right",
+      "right",
+      "down"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.gl-52-de-escalator",
+    "name": "GL-52 De-Escalator",
+    "sequence": [
+      "down",
+      "right",
+      "up",
+      "left",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.eat-700-expendable-napalm",
+    "name": "EAT-700 Expendable Napalm",
+    "sequence": [
+      "down",
+      "down",
+      "left",
+      "up",
+      "left"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.tx-41-sterilizer",
+    "name": "TX-41 Sterilizer",
+    "sequence": [
+      "down",
+      "left",
+      "up",
+      "down",
+      "left"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.eat-411-leveller",
+    "name": "EAT-411 Leveller",
+    "sequence": [
+      "down",
+      "down",
+      "left",
+      "up",
+      "down"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.gl-28-belt-fed-grenade-launcher",
+    "name": "GL-28 Belt-Fed Grenade Launcher",
+    "sequence": [
+      "down",
+      "left",
+      "up",
+      "left",
+      "up",
+      "up"
+    ],
+    "category": "Equipment",
+    "icon": "shippingbox",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.b-md-c4-pack",
+    "name": "B/MD C4 Pack",
+    "sequence": [
+      "down",
+      "right",
+      "up",
+      "up",
+      "right",
+      "up"
+    ],
+    "category": "Equipment",
+    "icon": "shippingbox",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.ms-11-solo-silo",
+    "name": "MS-11 Solo Silo",
+    "sequence": [
+      "down",
+      "up",
+      "right",
+      "down",
+      "down"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.b-flam-80-cremator",
+    "name": "B/FLAM-80 Cremator",
+    "sequence": [
+      "down",
+      "down",
+      "right",
+      "down",
+      "up",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.m-1000-maxigun",
+    "name": "M-1000 Maxigun",
+    "sequence": [
+      "down",
+      "left",
+      "right",
+      "down",
+      "up",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.cqc-1-one-true-flag",
+    "name": "CQC-1 One True Flag",
+    "sequence": [
+      "down",
+      "left",
+      "right",
+      "right",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.40-k-meltagun",
+    "name": "40-K Meltagun",
+    "sequence": [
+      "down",
+      "left",
+      "up",
+      "left",
+      "left",
+      "down"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.b-1-supply-pack",
+    "name": "B-1 Supply Pack",
+    "sequence": [
+      "down",
+      "left",
+      "down",
+      "up",
+      "up",
+      "down"
+    ],
+    "category": "Equipment",
+    "icon": "shippingbox",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.lift-850-jump-pack",
+    "name": "LIFT-850 Jump Pack",
+    "sequence": [
+      "down",
+      "up",
+      "up",
+      "down",
+      "up"
+    ],
+    "category": "Equipment",
+    "icon": "shippingbox",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.sh-20-ballistic-shield-backpack",
+    "name": "SH-20 Ballistic Shield Backpack",
+    "sequence": [
+      "down",
+      "left",
+      "down",
+      "down",
+      "up",
+      "left"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.ax-ar-23-guard-dog",
+    "name": "AX/AR-23 Guard Dog",
+    "sequence": [
+      "down",
+      "up",
+      "left",
+      "up",
+      "right",
+      "down"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.ax-las-5-rover",
+    "name": "AX/LAS-5 Rover",
+    "sequence": [
+      "down",
+      "up",
+      "left",
+      "up",
+      "right",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.sh-32-shield-generator-pack",
+    "name": "SH-32 Shield Generator Pack",
+    "sequence": [
+      "down",
+      "up",
+      "left",
+      "right",
+      "left",
+      "right"
+    ],
+    "category": "Equipment",
+    "icon": "shippingbox",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.sh-51-directional-shield",
+    "name": "SH-51 Directional Shield",
+    "sequence": [
+      "down",
+      "up",
+      "left",
+      "right",
+      "up",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.ax-flam-75-hot-dog",
+    "name": "AX/FLAM-75 Hot Dog",
+    "sequence": [
+      "down",
+      "up",
+      "left",
+      "up",
+      "left",
+      "left"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.b-100-portable-hellbomb",
+    "name": "B-100 Portable Hellbomb",
+    "sequence": [
+      "down",
+      "right",
+      "up",
+      "up",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.ax-arc-3-k-9",
+    "name": "AX/ARC-3 K-9",
+    "sequence": [
+      "down",
+      "up",
+      "left",
+      "up",
+      "right",
+      "left"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.lift-860-hover-pack",
+    "name": "LIFT-860 Hover Pack",
+    "sequence": [
+      "down",
+      "up",
+      "up",
+      "down",
+      "left",
+      "right"
+    ],
+    "category": "Equipment",
+    "icon": "shippingbox",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.ax-tx-13-dog-breath",
+    "name": "AX/TX-13 Dog Breath",
+    "sequence": [
+      "down",
+      "up",
+      "left",
+      "up",
+      "right",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.lift-182-warp-pack",
+    "name": "LIFT-182 Warp Pack",
+    "sequence": [
+      "down",
+      "left",
+      "right",
+      "down",
+      "left",
+      "right"
+    ],
+    "category": "Equipment",
+    "icon": "shippingbox",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.m-103-supply-frv",
+    "name": "M-103 Supply FRV",
+    "sequence": [
+      "left",
+      "down",
+      "left",
+      "left",
+      "down",
+      "up",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.td-110-maelstrom",
+    "name": "TD-110 Maelstrom",
+    "sequence": [
+      "left",
+      "down",
+      "right",
+      "down",
+      "left",
+      "down",
+      "up",
+      "left",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.m-104-incinerator-frv",
+    "name": "M-104 Incinerator FRV",
+    "sequence": [
+      "left",
+      "down",
+      "right",
+      "left",
+      "down",
+      "up",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.exo-49-emancipator-exosuit",
+    "name": "EXO-49 Emancipator Exosuit",
+    "sequence": [
+      "left",
+      "down",
+      "right",
+      "up",
+      "left",
+      "down",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.exo-45-patriot-exosuit",
+    "name": "EXO-45 Patriot Exosuit",
+    "sequence": [
+      "left",
+      "down",
+      "right",
+      "up",
+      "left",
+      "down",
+      "down"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.m-102-gunner-frv",
+    "name": "M-102 Gunner FRV",
+    "sequence": [
+      "left",
+      "down",
+      "right",
+      "down",
+      "right",
+      "down",
+      "up"
+    ],
+    "category": "Equipment",
+    "icon": "shippingbox",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.td-220-bastion-mk-xvi",
+    "name": "TD-220 Bastion MK XVI",
+    "sequence": [
+      "left",
+      "down",
+      "right",
+      "down",
+      "left",
+      "down",
+      "up",
+      "down",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.exo-55-breakthrough-exosuit",
+    "name": "EXO-55 Breakthrough Exosuit",
+    "sequence": [
+      "left",
+      "down",
+      "right",
+      "left",
+      "right",
+      "down",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.exo-51-lumberer-exosuit",
+    "name": "EXO-51 Lumberer Exosuit",
+    "sequence": [
+      "left",
+      "down",
+      "right",
+      "up",
+      "right",
+      "left",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.a-mg-43-machine-gun-sentry",
+    "name": "A/MG-43 Machine Gun Sentry",
+    "sequence": [
+      "down",
+      "up",
+      "right",
+      "right",
+      "up"
+    ],
+    "category": "Equipment",
+    "icon": "shippingbox",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.a-g-16-gatling-sentry",
+    "name": "A/G-16 Gatling Sentry",
+    "sequence": [
+      "down",
+      "up",
+      "right",
+      "left"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.a-ac-8-autocannon-sentry",
+    "name": "A/AC-8 Autocannon Sentry",
+    "sequence": [
+      "down",
+      "up",
+      "right",
+      "up",
+      "left",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.a-m-12-mortar-sentry",
+    "name": "A/M-12 Mortar Sentry",
+    "sequence": [
+      "down",
+      "up",
+      "right",
+      "right",
+      "down"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.a-mls-4x-rocket-sentry",
+    "name": "A/MLS-4X Rocket Sentry",
+    "sequence": [
+      "down",
+      "up",
+      "right",
+      "right",
+      "left"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.a-arc-3-tesla-tower",
+    "name": "A/ARC-3 Tesla Tower",
+    "sequence": [
+      "down",
+      "up",
+      "right",
+      "up",
+      "left",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.a-m-23-ems-mortar-sentry",
+    "name": "A/M-23 EMS Mortar Sentry",
+    "sequence": [
+      "down",
+      "up",
+      "right",
+      "down",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.a-las-98-laser-sentry",
+    "name": "A/LAS-98 Laser Sentry",
+    "sequence": [
+      "down",
+      "up",
+      "right",
+      "down",
+      "up",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.a-flam-40-flame-sentry",
+    "name": "A/FLAM-40 Flame Sentry",
+    "sequence": [
+      "down",
+      "up",
+      "right",
+      "down",
+      "up",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.a-gm-17-gas-mortar-sentry",
+    "name": "A/GM-17 Gas Mortar Sentry",
+    "sequence": [
+      "down",
+      "up",
+      "right",
+      "down",
+      "left"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.md-6-anti-personnel-minefield",
+    "name": "MD-6 Anti-Personnel Minefield",
+    "sequence": [
+      "down",
+      "left",
+      "up",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.md-i4-incendiary-mines",
+    "name": "MD-I4 Incendiary Mines",
+    "sequence": [
+      "down",
+      "left",
+      "left",
+      "down"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.md-17-anti-tank-mines",
+    "name": "MD-17 Anti-Tank Mines",
+    "sequence": [
+      "down",
+      "left",
+      "up",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.fx-12-shield-generator-relay",
+    "name": "FX-12 Shield Generator Relay",
+    "sequence": [
+      "down",
+      "down",
+      "left",
+      "right",
+      "left",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.e-mg-101-hmg-emplacement",
+    "name": "E/MG-101 HMG Emplacement",
+    "sequence": [
+      "down",
+      "up",
+      "left",
+      "right",
+      "right",
+      "left"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.e-gl-21-grenadier-battlement",
+    "name": "E/GL-21 Grenadier Battlement",
+    "sequence": [
+      "down",
+      "right",
+      "down",
+      "left",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.md-8-gas-mines",
+    "name": "MD-8 Gas Mines",
+    "sequence": [
+      "down",
+      "left",
+      "left",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.e-at-12-anti-tank-emplacement",
+    "name": "E/AT-12 Anti-Tank Emplacement",
+    "sequence": [
+      "down",
+      "up",
+      "left",
+      "right",
+      "right",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.eagle-rearm",
+    "name": "Eagle Rearm",
+    "sequence": [
+      "up",
+      "up",
+      "left",
+      "up",
+      "right"
+    ],
+    "category": "Eagle",
+    "icon": "airplane",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.call-in-super-destroyer",
+    "name": "Call In Super Destroyer",
+    "sequence": [
+      "up",
+      "up",
+      "down",
+      "down",
+      "left",
+      "right",
+      "left",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.sos-beacon",
+    "name": "SoS Beacon",
+    "sequence": [
+      "up",
+      "down",
+      "right",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.resupply",
+    "name": "Resupply",
+    "sequence": [
+      "down",
+      "down",
+      "up",
+      "right"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.reinforce",
+    "name": "Reinforce",
+    "sequence": [
+      "up",
+      "down",
+      "right",
+      "left",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.cargo-container",
+    "name": "Cargo Container",
+    "sequence": [
+      "up",
+      "up",
+      "down",
+      "down",
+      "right",
+      "down"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.nux-223-hellbomb",
+    "name": "NUX-223 Hellbomb",
+    "sequence": [
+      "down",
+      "up",
+      "left",
+      "down",
+      "up",
+      "right",
+      "down",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.seismic-probe",
+    "name": "Seismic Probe",
+    "sequence": [
+      "up",
+      "up",
+      "left",
+      "right",
+      "down",
+      "down"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.sssd-delivery",
+    "name": "SSSD Delivery",
+    "sequence": [
+      "down",
+      "down",
+      "down",
+      "down",
+      "down",
+      "up",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.tectonic-drill",
+    "name": "Tectonic Drill",
+    "sequence": [
+      "up",
+      "down",
+      "up",
+      "down",
+      "up",
+      "down"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.upload-data",
+    "name": "Upload Data",
+    "sequence": [
+      "left",
+      "right",
+      "up",
+      "up",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.reinforcement-pods",
+    "name": "Reinforcement Pods",
+    "sequence": [
+      "left",
+      "right",
+      "up",
+      "up",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.aquifer-drill",
+    "name": "Aquifer Drill",
+    "sequence": [
+      "left",
+      "left",
+      "left",
+      "up",
+      "down",
+      "right",
+      "down",
+      "down"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.portable-comms-relay",
+    "name": "Portable Comms Relay",
+    "sequence": [
+      "up",
+      "up",
+      "down",
+      "down",
+      "left",
+      "left",
+      "down"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.prospecting-drill",
+    "name": "Prospecting Drill",
+    "sequence": [
+      "down",
+      "down",
+      "left",
+      "right",
+      "down",
+      "down"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.hive-breaker-drill",
+    "name": "Hive Breaker Drill",
+    "sequence": [
+      "left",
+      "up",
+      "down",
+      "right",
+      "down",
+      "down"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.activate-e-711-extraction-drill",
+    "name": "Activate E-711 Extraction Drill",
+    "sequence": [
+      "down",
+      "down",
+      "left",
+      "left",
+      "down",
+      "down"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.dark-fluid-vessel",
+    "name": "Dark Fluid Vessel",
+    "sequence": [
+      "up",
+      "left",
+      "right",
+      "down",
+      "up",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.super-earth-flag",
+    "name": "Super Earth Flag",
+    "sequence": [
+      "down",
+      "up",
+      "down",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.seaf-artillery",
+    "name": "SEAF Artillery",
+    "sequence": [
+      "right",
+      "up",
+      "up",
+      "down"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.tactical-video-camera",
+    "name": "Tactical Video Camera",
+    "sequence": [
+      "right",
+      "down",
+      "down",
+      "up",
+      "left",
+      "left",
+      "up"
+    ],
+    "category": "General",
+    "icon": "command.square",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
+    "enabled": false,
+    "confirmation": true,
+    "steps": []
+  },
+  {
+    "id": "zero.orbital-illumination-flare",
+    "name": "Orbital Illumination Flare",
+    "sequence": [
+      "right",
+      "right",
+      "left",
+      "left"
+    ],
+    "category": "Orbital",
+    "icon": "scope",
+    "description": "Stratagem Zero 数据；本地桌面命令映射。",
     "enabled": false,
     "confirmation": true,
     "steps": []

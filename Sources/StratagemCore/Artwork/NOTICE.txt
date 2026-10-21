@@ -1,4 +1,20 @@
-Original geometric artwork and desktop examples
-Copyright (c) 2026 EJYDOvO
-Licensed under MIT; see LICENSE.txt.
-No third-party game artwork or catalog is included.
+StratagemDesk Private Candidate — mixed artwork and data
+
+8 original desk.* SVGs: Copyright (c) 2026 EJYDOvO, MIT.
+See ORIGINAL-DESKTOP-LICENSE.txt.
+
+115 third-party zero.* game SVGs and 115 game catalog entries:
+EXCLUDED from the project MIT license. No relicensing or additional rights granted.
+109 SVG mappings: Nicolas Vigneux / contributors,
+https://github.com/nvigneux/Helldivers-2-Stratagems-icons-svg
+revision 69f5cd62ad4b815a0eeb04bab672e1731ed95aa5.
+6 SVG mappings: helldivers.wiki.gg URLs in Stratagem Zero data.
+Data: Stratagem Zero Authors, https://github.com/aslepenkov/stratagem-zero
+revision c6654bacff48373214e6136ecc7a1269daefaae2.
+
+HELLDIVERS game content retains its respective owners' rights;
+SVG contributions retain their authors' applicable rights.
+See GAME_CONTENT_NOTICE.md, game-icons-sources.json, sources.json,
+game-data/sources.json and the unmodified game-data/StratagemZero-LICENSE.txt.
+Bundled for offline use in this private candidate. Unofficial project.
+Source attribution is not an additional permission grant.

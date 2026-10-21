@@ -2,8 +2,9 @@ SharpVectors.Wpf 1.8.6
 https://github.com/ElinamLLC/SharpVectors
 https://www.nuget.org/packages/SharpVectors.Wpf/1.8.6
 
-Used for SVG rendering in the Windows UI. Original public-edition artwork is MIT licensed, independently of this library.
-See Artwork/NOTICE.txt and Artwork/LICENSE.txt.
+Used for SVG rendering in the Windows UI. Only the eight original desk.* SVGs are MIT licensed.
+Third-party zero.* game icons and game data are excluded from the project MIT license.
+See Artwork/NOTICE.txt, Artwork/GAME_CONTENT_NOTICE.md and Artwork/game-data/StratagemZero-LICENSE.txt.
 
 BSD 3-Clause License
 

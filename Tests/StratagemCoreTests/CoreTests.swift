@@ -189,12 +189,15 @@ final class CoreTests: XCTestCase {
     func testEmptyActiveSequenceRejected() { XCTAssertFalse(SequenceMatcher.conflicts(in: [item([])]).isEmpty) }
     func testCatalogAndDefaultsAreSafe() throws {
         let builtins = try BuiltinCatalog.load()
-        XCTAssertEqual(builtins.count, 8)
+        XCTAssertEqual(builtins.count, 123)
+        XCTAssertEqual(builtins.filter { $0.id.hasPrefix("zero.") }.count, 115)
+        XCTAssertEqual(builtins.filter { $0.id.hasPrefix("desk.") }.count, 8)
+        XCTAssertEqual(builtins.first { $0.id == "zero.reinforce" }?.sequence, [.up, .down, .right, .left, .up])
         XCTAssertEqual(Set(builtins.map(\.id)).count, builtins.count)
         XCTAssertTrue(builtins.allSatisfy { !$0.enabled && !$0.sequence.isEmpty && !$0.icon.contains("http") })
         let defaults = BuiltinCatalog.defaults(builtins: builtins)
         try ConfigurationStore.validate(defaults)
-        XCTAssertEqual(defaults.overrides.count, builtins.count)
+        XCTAssertEqual(defaults.overrides.count, 8)
         XCTAssertTrue(defaults.actions.allSatisfy { !$0.approved })
         XCTAssertTrue(defaults.resolved(builtins: builtins).allSatisfy { !$0.enabled })
     }

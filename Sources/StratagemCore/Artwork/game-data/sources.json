@@ -1,0 +1,15 @@
+{
+  "repository": "https://github.com/aslepenkov/stratagem-zero",
+  "revision": "c6654bacff48373214e6136ecc7a1269daefaae2",
+  "dataUrl": "https://github.com/aslepenkov/stratagem-zero/blob/c6654bacff48373214e6136ecc7a1269daefaae2/data/stratagems.json",
+  "upstreamLicenseUrl": "https://github.com/aslepenkov/stratagem-zero/blob/c6654bacff48373214e6136ecc7a1269daefaae2/LICENSE",
+  "upstreamFile": "stratagems-upstream.json",
+  "upstreamSha256": "feb59c8b95a3b0c66874fe3018d43aea42a47750fa3ba9fd5bc3537335b3de96",
+  "catalogFile": "Sources/StratagemCore/Resources/builtins.json",
+  "catalogSha256": "36481349cac614c45f6e0deb50394b03c19b698becc45381a63faa49d8811b63",
+  "entryCount": 115,
+  "copyright": "Stratagem Zero Authors and the respective game rights holders, as applicable.",
+  "projectMitApplies": false,
+  "upstreamLicense": "MIT-labelled nonstandard text, retained verbatim in StratagemZero-LICENSE.txt. No relicensing by this project.",
+  "transformation": "Names and direction sequences retained. Deterministic zero.* IDs; categories and fallback system-symbol names are local browsing metadata. Upstream has no categories."
+}

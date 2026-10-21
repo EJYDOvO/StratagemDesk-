@@ -26,7 +26,10 @@ public sealed class Contracts
     }
     [TestMethod] public void CatalogAndDefaultsAreSafe()
     {
-        var builtins = Catalog.Load(); Assert.AreEqual(8, builtins.Count); Assert.AreEqual(8, builtins.Select(e => e.Id).Distinct().Count());
+        var builtins = Catalog.Load(); Assert.AreEqual(123, builtins.Count); Assert.AreEqual(123, builtins.Select(e => e.Id).Distinct().Count());
+        Assert.AreEqual(115, builtins.Count(e => e.Id.StartsWith("zero.", StringComparison.Ordinal)));
+        Assert.AreEqual(8, builtins.Count(e => e.Id.StartsWith("desk.", StringComparison.Ordinal)));
+        CollectionAssert.AreEqual(new[] { Direction.Up, Direction.Down, Direction.Right, Direction.Left, Direction.Up }, builtins.Single(e => e.Id == "zero.reinforce").Sequence.ToArray());
         Assert.IsTrue(builtins.All(e => !e.Enabled && e.Sequence.Count > 0));
         var c = Catalog.Defaults(builtins); ConfigurationStore.Validate(c, builtins);
         Assert.IsTrue(c.Actions.All(a => !a.Approved)); Assert.IsTrue(c.Resolve(builtins).All(e => !e.Enabled));

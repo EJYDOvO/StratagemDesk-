@@ -1,4 +1,4 @@
-name: Public readiness and secrets
+name: Private candidate provenance and secrets
 on:
   push:
     branches: [main]
@@ -13,7 +13,11 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
-      - name: Original assets, license and history privacy
+      - name: Require private repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: test "$(gh api "repos/$GITHUB_REPOSITORY" --jq '.private')" = true
+      - name: Mixed assets, license boundaries and history privacy
         run: python3 scripts/audit_public.py
       - name: Gitleaks full-history scan
         run: |

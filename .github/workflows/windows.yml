@@ -2,7 +2,7 @@ name: Windows build and contracts
 on:
   push:
     branches: [main]
-    paths: ['Windows/**', 'Sources/StratagemCore/Resources/**', 'Sources/StratagemCore/Artwork/**', '.github/workflows/windows.yml']
+    paths: ['Windows/**', 'Sources/StratagemCore/Resources/**', 'Sources/StratagemCore/Artwork/**', 'LICENSE', 'THIRD_PARTY.md', '.github/workflows/windows.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -55,7 +55,7 @@ jobs:
           }
           if ((Get-ChildItem $licenseDir -File).Count -lt 2) { throw 'Runtime license/notice files missing' }
           @{
-            version = '0.1.0-preview.1'
+            version = '0.1.0-preview.2'
             sourceCommit = $env:GITHUB_SHA
             runUrl = "https://github.com/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID"
             platform = 'win-x64'

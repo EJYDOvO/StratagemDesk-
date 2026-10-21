@@ -7,8 +7,10 @@ public enum BuiltinCatalog {
         #else
         let bundle = Bundle.main
         #endif
-        guard let url = bundle.url(forResource: "builtins", withExtension: "json") else { throw DeskError("内置战备资源缺失") }
-        return try JSONDecoder().decode([Stratagem].self, from: Data(contentsOf: url))
+        return try ["builtins", "desktop-examples"].flatMap { name -> [Stratagem] in
+            guard let url = bundle.url(forResource: name, withExtension: "json") else { throw DeskError("内置战备资源缺失：\(name)") }
+            return try JSONDecoder().decode([Stratagem].self, from: Data(contentsOf: url))
+        }
     }
     public static func defaults(builtins: [Stratagem]) -> Configuration {
         var config = Configuration()
