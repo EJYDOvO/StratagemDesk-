@@ -4,6 +4,7 @@ using System.Windows.Media.Imaging;
 using System.Xml;
 using System.Text.RegularExpressions;
 using SharpVectors.Converters;
+using SharpVectors.Dom;
 using SharpVectors.Renderers.Wpf;
 
 namespace StratagemDesk.App;
@@ -21,7 +22,7 @@ public sealed class GameArtwork
         {
             try
             {
-                if (JsonSerializer.Deserialize<Index>(File.ReadAllText(Path.Combine(folder, "index.json")), Json.Options) is { } index &&
+                if (JsonSerializer.Deserialize<Index>(ReadLocalBytes(Path.Combine(folder, "index.json"), 1_000_000) ?? [], Json.Options) is { } index &&
                     index.Icons != null && index.DefaultIcons != null && index.AccentColors != null && index.DisplayNames != null && index.CatalogNames != null)
                     packs.Add((folder, index));
             }
@@ -30,6 +31,7 @@ public sealed class GameArtwork
     }
     public ImageSource? Image(Stratagem e, bool useFallback = true)
     {
+        if (string.IsNullOrWhiteSpace(e.Icon)) return useFallback ? fallback : null;
         if (Path.IsPathFullyQualified(e.Icon)) return Load(e.Icon) ?? (useFallback ? fallback : null);
         foreach (var pack in packs)
             if (pack.Index.DefaultIcons.GetValueOrDefault(e.Id) == e.Icon && pack.Index.Icons.GetValueOrDefault(e.Id) is { } file && Path.GetFileName(file) == file)
@@ -48,35 +50,65 @@ public sealed class GameArtwork
                 try { return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#" + hex)); } catch (FormatException) { }
         return Brushes.Goldenrod;
     }
+    // Check drive syntax before any filesystem access: a fully qualified path may be UNC.
+    private static byte[]? ReadLocalBytes(string path, int limit)
+    {
+        if (path.Length < 3 || !char.IsAsciiLetter(path[0]) || path[1] != ':' ||
+            (path[2] != '\\' && path[2] != '/') || path.AsSpan(2).Contains(':')) return null;
+        var fullPath = Path.GetFullPath(path);
+        if (new DriveInfo(fullPath[..3]).DriveType is not (DriveType.Fixed or DriveType.Removable or DriveType.CDRom or DriveType.Ram)) return null;
+        var current = fullPath[..3];
+        // Do not follow junctions, symlinks, mounted folders or cloud placeholders.
+        foreach (var part in fullPath[3..].Split('\\', StringSplitOptions.RemoveEmptyEntries))
+        {
+            current = Path.Combine(current, part);
+            if ((File.GetAttributes(current) & FileAttributes.ReparsePoint) != 0) return null;
+        }
+        using var stream = new FileStream(fullPath, FileMode.Open, FileAccess.Read, FileShare.Read);
+        if (stream.Length == 0 || stream.Length > limit) return null;
+        var bytes = new byte[checked((int)stream.Length)]; stream.ReadExactly(bytes); return bytes;
+    }
+    private static XmlReader SvgReader(byte[] bytes) => XmlReader.Create(new MemoryStream(bytes, writable: false),
+        new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit, XmlResolver = null,
+            MaxCharactersInDocument = 500_000, CloseInput = true });
     private ImageSource? Load(string path)
     {
         if (images.TryGetValue(path, out var cached)) return cached;
         ImageSource? image = null;
         try
         {
-            if (string.Equals(Path.GetExtension(path), ".svg", StringComparison.OrdinalIgnoreCase))
+            var extension = Path.GetExtension(path).ToLowerInvariant();
+            if (extension is not (".svg" or ".png" or ".jpg" or ".jpeg" or ".bmp")) return null;
+            var bytes = ReadLocalBytes(path, extension == ".svg" ? 500_000 : 10_000_000);
+            if (bytes == null) return null;
+            if (extension == ".svg")
             {
-                if (new FileInfo(path).Length > 500_000) return null;
-                // Reject active or externally referenced content before invoking the SVG renderer.
-                using (var reader = XmlReader.Create(path, new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit, XmlResolver = null }))
+                using (var reader = SvgReader(bytes))
                     while (reader.Read())
                     {
+                        if (reader.NodeType == XmlNodeType.ProcessingInstruction) throw new InvalidDataException("SVG 不允许处理指令");
                         if (reader.NodeType != XmlNodeType.Element) continue;
                         if (reader.LocalName is "script" or "foreignObject" or "image" or "style") throw new InvalidDataException("不支持此 SVG 内容");
                         while (reader.MoveToNextAttribute())
                             if (reader.LocalName.StartsWith("on", StringComparison.OrdinalIgnoreCase) ||
+                                (reader.LocalName == "base" && reader.NamespaceURI == "http://www.w3.org/XML/1998/namespace") ||
                                 (reader.LocalName == "href" && !reader.Value.StartsWith('#')) ||
                                 (reader.Value.Contains("url(", StringComparison.OrdinalIgnoreCase) && !Regex.IsMatch(reader.Value, @"^url\(\s*#[A-Za-z0-9_-]+\s*\)$")))
                                 throw new InvalidDataException("SVG 含外部引用");
                         reader.MoveToElement();
                     }
-                var drawing = new FileSvgReader(new WpfDrawingSettings { IncludeRuntime = false, TextAsGeometry = true }).Read(path);
+                // Render the same bounded bytes, never reopen the path or use the library's default resolver.
+                using var source = SvgReader(bytes);
+                var drawing = new FileSvgReader(new WpfDrawingSettings { IncludeRuntime = false, TextAsGeometry = true,
+                    ExternalResourcesAccessMode = ExternalResourcesAccessModes.Ignore }).Read(source);
                 if (drawing != null) image = new DrawingImage(drawing);
             }
             else
             {
+                using var source = new MemoryStream(bytes, writable: false);
                 var bitmap = new BitmapImage(); bitmap.BeginInit(); bitmap.CacheOption = BitmapCacheOption.OnLoad;
-                bitmap.UriSource = new Uri(path, UriKind.Absolute); bitmap.EndInit(); image = bitmap;
+                bitmap.DecodePixelWidth = 256; bitmap.DecodePixelHeight = 256;
+                bitmap.StreamSource = source; bitmap.EndInit(); image = bitmap;
             }
             image?.Freeze();
         }

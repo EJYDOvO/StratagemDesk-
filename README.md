@@ -13,6 +13,7 @@ A macOS and Windows desktop command launcher: hold a shortcut, enter a direction
 - 初次运行全部条目停用、动作未审核。检查操作、审核、启用并保存后才可通过快捷键执行。
 - 包含 115 条游戏战备和对应图标，另保留 Terminal、Home Folder、Calculator、File Browser、Clock、Status、Pause、Workflow 这 8 个桌面示例。游戏条目默认停用、无操作步骤，需自行编辑；原有桌面示例配置继续保留。支持自定义条目、批量启停及默认 / 当前 / 已保存独立档案。
 - 可编辑 Shell / PowerShell、可执行文件、启动应用、打开文件/URL、延迟、通知及 macOS 快捷指令，支持逐步测试、失败后继续、取消和超时。
+- Windows 导入时会清除外部图片路径，需重新选择本地图片；图标不读取网络驱动器、UNC、设备路径或链接，SVG 不允许外部资源。非法空值字段会在写盘前拒绝。
 - 热键只使用已保存状态，草稿测试明确预览当前编辑内容。导入会停用条目并撤销动作审核，平台专用操作需要重新配置。
 
 公开版使用独立的配置目录、应用身份、Windows 托盘单例和登录启动项，不读取另一版本的默认配置。macOS 为 `~/Library/Application Support/StratagemDesk-Public/`，Windows 为 `%LOCALAPPDATA%\StratagemDesk-Public\`。同时运行多个版本时，请为它们设置不同的全局快捷键。

@@ -96,6 +96,7 @@ public partial class DesktopApp : System.Windows.Application
         var checks = new Dictionary<string, bool>();
         try
         {
+            foreach (var check in await ArtworkSafetySmoke.RunAsync(artwork, directory)) checks.Add(check.Key, check.Value);
             var invalidPanel = new StackPanel(); UI.Number(invalidPanel, "输入超时", 5, v => model.Current.Settings.InputTimeout = v);
             var invalidWindow = new Window { Content = invalidPanel, Width = 200, Height = 120, ShowActivated = false, ShowInTaskbar = false };
             invalidWindow.Show(); await Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ApplicationIdle);

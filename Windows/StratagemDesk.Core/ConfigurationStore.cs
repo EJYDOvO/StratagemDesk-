@@ -38,7 +38,9 @@ public sealed class ConfigurationStore(string path, IReadOnlyList<Stratagem> bui
         }
         foreach (var e in entries)
         {
-            Require(!string.IsNullOrWhiteSpace(e.Name) && e.Sequence != null && e.Sequence.Count <= 32 && e.Steps != null, "战备字段无效");
+            Require(!string.IsNullOrWhiteSpace(e.Name) && e.Icon != null && e.Category != null && e.Description != null &&
+                !new[] { e.Name, e.Icon, e.Category, e.Description }.Any(value => value.Contains('\0')) &&
+                e.Sequence != null && e.Sequence.Count <= 32 && e.Steps != null, "战备名称、图标、分类或说明字段无效");
             Require(e.Steps!.Select(step => step.Id).Distinct().Count() == e.Steps.Count &&
                 e.Steps.All(step => !string.IsNullOrEmpty(step.Id) && c.Action(step.ActionId) != null && Range(step.DelayAfter, 0, 86400)), "工作流引用或延迟无效");
         }
@@ -69,7 +71,13 @@ public sealed class ConfigurationStore(string path, IReadOnlyList<Stratagem> bui
     public static Configuration QuarantinedImport(byte[] bytes, AppSettings settings, IReadOnlyList<Stratagem> builtins)
     {
         var c = Decode(bytes, builtins, validateSettings: false); c.Settings = Json.Clone(settings); c.Platform = "windows";
-        foreach (var e in c.Overrides.Values.Concat(c.Custom)) { e.Enabled = false; e.Confirmation = true; }
+        foreach (var e in c.Overrides.Values.Concat(c.Custom))
+        {
+            e.Enabled = false; e.Confirmation = true;
+            // Importing a workflow is not consent to read an arbitrary local or network image.
+            if (e.Icon.IndexOfAny(['/', '\\', ':']) >= 0)
+                e.Icon = builtins.FirstOrDefault(b => b.Id == e.Id)?.Icon ?? "command.square";
+        }
         foreach (var a in c.Actions) a.Approved = false;
         Validate(c, builtins); return c;
     }
