@@ -28,6 +28,21 @@ jobs:
               subprocess.run(['git', 'update-index', '--add', '--cacheinfo', '100644', blob, 'configuration-backup-check.json'], env=environment, check=True)
               result = subprocess.run(['python3', 'scripts/audit_public.py'], env=environment, text=True, capture_output=True)
               assert result.returncode != 0 and 'Private configuration or backup is tracked' in result.stderr, result.stderr
+          with tempfile.TemporaryDirectory() as temporary:
+              checkout = pathlib.Path(temporary) / 'repository'
+              subprocess.run(['git', 'clone', '--quiet', '--shared', '.', str(checkout)], check=True)
+              def git(*args):
+                  subprocess.run(['git', '-C', str(checkout), *args], check=True, capture_output=True)
+              git('config', 'user.name', 'Backup guard check')
+              git('config', 'user.email', 'audit@users.noreply.github.com')
+              backup = checkout / 'configuration-backup-check.json'
+              shutil.copyfile(checkout / 'Sources/StratagemCore/Resources/desktop-examples.json', backup)
+              git('add', '-f', backup.name)
+              git('commit', '-m', 'Add copied backup fixture')
+              git('rm', backup.name)
+              git('commit', '-m', 'Remove backup fixture')
+              result = subprocess.run(['python3', 'scripts/audit_public.py'], cwd=checkout, text=True, capture_output=True)
+              assert result.returncode != 0 and 'Private configuration or backup in history' in result.stderr, result.stderr
           PYTEST
       - name: Gitleaks full-history scan
         run: |

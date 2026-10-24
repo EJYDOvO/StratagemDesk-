@@ -11,13 +11,13 @@ from urllib.parse import urlparse
 
 root = pathlib.Path(__file__).resolve().parents[1]
 def git(*args):
-    return subprocess.check_output(['git', '-C', str(root), *args]).decode()
+    return subprocess.check_output(['git', '-C', str(root), *args]).decode(errors='surrogateescape')
 def read(path):
     return json.loads((root / path).read_text())
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
-files = git('ls-files').splitlines()
+files = [name for name in git('ls-files', '-z').split('\0') if name]
 assert (root / 'LICENSE').read_text().startswith('MIT License\n')
 assert not any(name.startswith(('ThirdParty/', 'docs/evidence/')) for name in files)
 assert not any(pathlib.Path(name).suffix.lower() in ('.png', '.jpg', '.jpeg', '.gif', '.zip', '.exe', '.dll', '.pfx', '.p12') for name in files)
@@ -94,6 +94,10 @@ for entry in manifest['entries']:
 
 for line in git('log', '--all', '--format=%ae%n%ce').splitlines():
     assert line.endswith('@users.noreply.github.com') or line == 'noreply@github.com', 'Private email in history'
+# Object enumeration deduplicates blobs and cannot establish every historical name.
+# Include merge diffs and both sides of renames, with NUL separation for filenames.
+historical_paths = {path for path in git('log', '--all', '--full-history', '-m', '--format=', '--name-only', '-z', '--no-renames').split('\0') if path}
+assert not any(private_configuration(path) for path in historical_paths), 'Private configuration or backup in history'
 patterns = [re.compile(rb'/' + rb'Users/(?!runner(?:/|$)|Shared(?:/|$))[^\s/]+/'),
             re.compile(rb'-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----')]
 scanned = 0
@@ -109,6 +113,7 @@ report = {'passed': True, 'historyBlobsChecked': scanned, 'originalCatalogEntrie
           'gameCatalogEntries': len(games), 'originalArtworkHashesChecked': 8, 'gameArtworkHashesChecked': 115,
           'projectLicense': 'MIT for project-owned content only', 'gameContentExcludedFromProjectMit': True,
           'upstreamGameLicensingResolved': False, 'rightsClearanceEstablished': False,
+          'historicalPathsChecked': len(historical_paths),
           'scope': 'Static privacy, provenance and license-boundary checks. Not rights clearance; Gitleaks runs separately.'}
 out = root / 'build/public-audit'; out.mkdir(parents=True, exist_ok=True)
 (out / 'source-audit.json').write_text(json.dumps(report, indent=2) + '\n')
