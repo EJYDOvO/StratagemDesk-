@@ -1,15 +1,23 @@
-# StratagemDesk Public — Windows
+# StratagemDesk — Windows
 
-Download this repository's Windows ZIP and extract the entire folder. Run `StratagemDeskPublic.exe`; keep all DLLs, `Artwork/`, `licenses/` and notices beside it. The portable x64 build includes .NET and does not require an SDK installation.
+Download the Windows x64 ZIP from Releases and extract the entire folder. Run `StratagemDeskPublic.exe`; keep all DLLs, `Artwork/`, `licenses/` and notices beside it. The package includes the .NET runtime. This preview is unsigned.
 
-Hold **Ctrl+Alt+S**, enter a directional sequence, and press Enter when confirmation is enabled. Release the shortcut to hide the HUD. First review each operation, approve it, enable the entry and save. The catalog contains 115 game entries with bundled third-party icons and eight original desktop examples. Game entries start disabled with no operation steps; configure them before enabling. Existing desktop-example profiles remain available.
+## Use
 
-The editor supports batch enable/disable, independent default/current/saved profiles, workflow editing and testing, JSON import/export, sensitive-output redaction, timeout/cancellation, notifications and login startup. PowerShell uses `$args` for structured arguments. macOS actions and paths need rebinding on Windows.
+Hold **Ctrl + Alt + S**, enter a direction sequence, and press Enter when confirmation is enabled. Release the shortcut to hide the HUD; an already started workflow continues.
 
-Configuration, backups and the last-run log live under `%LOCALAPPDATA%\StratagemDesk-Public\`. The public edition has its own singleton and login entry. Custom configuration paths preserve parent-directory permissions; newly written app files use private ACLs. PowerShell payload files are private and cleaned after commands finish, cancel or fail to start; forced termination may leave private temporary files.
+Entries start disabled. Review and configure each operation, approve it, enable the entry and save. The catalog contains 115 game entries with icons and eight desktop examples. Game entries have no operation steps until you configure them.
 
-Only project-owned code, eight desktop examples and desk.* artwork use the project MIT license. The 115 game entries, zero.* icons and original upstream files are excluded from MIT. Source URLs, pinned revisions, hashes, copyright notices and unmodified upstream license ship in Artwork/game-data/, Artwork/game-icons-sources.json and Artwork/GAME_CONTENT_NOTICE.md. This candidate repository remains private. SharpVectors.Wpf and the .NET runtime retain their own notices. See `THIRD_PARTY.md`, `THIRD_PARTY.txt` and `licenses/`.
+The editor supports custom entries, batch enable/disable, independent default/current/saved profiles, workflow editing and testing, JSON import/export, sensitive-log hiding, timeouts, cancellation, notifications and login startup. PowerShell uses `$args` for structured arguments.
 
-Automated builds, native tests and WPF smoke run on GitHub Actions Windows runners. Physical keyboard layouts, fullscreen, mixed DPI, lock/suspend and consumer desktop integration require manual acceptance. This preview is unsigned and does not elevate itself.
+Imported entries are disabled and their operation approvals are revoked. File-based icon references reset to a default icon; select a local image again if needed. Network drives, UNC/device paths, file links and SVG external resources are not supported. macOS-specific actions and paths need reconfiguration.
 
-Artwork safety: importing configurations resets file-based image references to a bundled/default icon. Select a local image again after import. Only local drive files are loaded; UNC/network drives, device paths and reparse points are rejected. SVG external resources and processing instructions are blocked; PNG/JPEG/BMP decoding uses bounded local bytes. Invalid null presentation fields are rejected before configuration replacement.
+## Configuration and safety
+
+Configuration, backups and the last-run log live under `%LOCALAPPDATA%\StratagemDesk-Public\`.
+
+Operations run with your current user permissions. Review scripts, arguments and target paths before approving them. Configuration files retain execution parameters; avoid storing or sharing passwords and tokens. See the repository’s `SECURITY.md` for reporting security issues.
+
+## License
+
+Project-owned code, eight desktop examples and `desk.*` icons use the project MIT license (`LICENSE` in the repository, `LICENSE.txt` in the application package). The 115 game entries, `zero.*` icons and original upstream files are excluded from that license and retain their original rights and terms. See `THIRD_PARTY.md` for sources and copyright details, and `THIRD_PARTY.txt` for SharpVectors notices. Runtime notices are included in the application package's `licenses/` folder.

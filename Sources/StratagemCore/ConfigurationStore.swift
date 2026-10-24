@@ -90,8 +90,16 @@ public struct ConfigurationStore {
         document["settings"] = try JSONSerialization.jsonObject(with: JSONEncoder().encode(settings))
         var config = try decode(JSONSerialization.data(withJSONObject: document))
         for i in config.actions.indices { config.actions[i].approved = false }
-        for i in config.custom.indices { config.custom[i].enabled = false; config.custom[i].confirmation = true }
-        for id in Array(config.overrides.keys) { config.overrides[id]?.enabled = false; config.overrides[id]?.confirmation = true }
+        let builtins = try BuiltinCatalog.load()
+        func importedEntry(_ original: Stratagem) -> Stratagem {
+            var entry = original; entry.enabled = false; entry.confirmation = true
+            if entry.icon.contains(where: { "/\\:".contains($0) }) {
+                entry.icon = builtins.first(where: { $0.id == entry.id })?.icon ?? "command.square"
+            }
+            return entry
+        }
+        config.custom = config.custom.map(importedEntry)
+        config.overrides = config.overrides.mapValues(importedEntry)
         return config
     }
     public static func exportData(_ config: Configuration, includeSensitive: Bool = false) throws -> Data {

@@ -19,9 +19,9 @@ import StratagemCore
         #if DEBUG
         if CommandLine.arguments.contains("--bundled-artwork-only") { directories = [] }
         #endif
-        if let bundled = BundledArtwork.directory { directories.append(bundled) }
+        if let bundled = BundledArtwork.directory?.resolvingSymlinksInPath() { directories.append(bundled) }
         for directory in directories {
-            if let data = try? Data(contentsOf: directory.appendingPathComponent("index.json")),
+            if let data = LocalArtwork.read(directory.appendingPathComponent("index.json").path, maximumBytes: 1_000_000),
                let index = try? JSONDecoder().decode(Index.self, from: data) {
                 packs.append((directory, index))
             }
@@ -57,7 +57,7 @@ import StratagemCore
     private func load(_ path: String) -> NSImage? {
         if let image = cache[path] { return image }
         if missing.contains(path) { return nil }
-        guard let image = NSImage(contentsOfFile: path) else { missing.insert(path); return nil }
+        guard let image = LocalArtwork.image(path) else { missing.insert(path); return nil }
         cache[path] = image
         return image
     }

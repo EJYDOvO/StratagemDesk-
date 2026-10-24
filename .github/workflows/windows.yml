@@ -63,7 +63,7 @@ jobs:
             if (-not (Test-Path "build/windows-x64/Artwork/$notice")) { throw "Missing copyright notice: $notice" }
           }
           @{
-            version = '0.1.0-preview.3'
+            version = '0.1.0-preview.4'
             sourceCommit = $env:GITHUB_SHA
             runUrl = "https://github.com/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID"
             platform = 'win-x64'
