@@ -5,20 +5,12 @@ import Darwin
 
 final class ArtworkSafetyTests: XCTestCase {
     private func directory() throws -> URL {
-        let url = FileManager.default.temporaryDirectory.resolvingSymlinksInPath().appendingPathComponent(UUID().uuidString)
+        // Foundation may shorten /private/var back to the symlinked /var alias.
+        // Use the physical checkout for positive fixtures; symlink rejection is tested separately.
+        let url = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
+            .appendingPathComponent("build/artwork-fixtures/" + UUID().uuidString)
         try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
         addTeardownBlock { try? FileManager.default.removeItem(at: url) }
-        // Keep failing cloud paths diagnosable without weakening the actual loader assertions.
-        let probe = url.appendingPathComponent("probe.png")
-        try Data([1]).write(to: probe)
-        if LocalArtwork.read(probe.path, maximumBytes: 1) == nil {
-            var volume = statfs()
-            let volumeResult = statfs(probe.path, &volume)
-            let descriptor = open(probe.path, O_RDONLY | O_NONBLOCK | O_NOFOLLOW_ANY)
-            let openError = errno
-            if descriptor >= 0 { close(descriptor) }
-            print("Artwork fixture path=\(probe.path) resolved=\(probe.resolvingSymlinksInPath().path) statfs=\(volumeResult) flags=\(volume.f_flags) open=\(descriptor) errno=\(openError)")
-        }
         return url
     }
     func testReadsOnlyBoundedRegularLocalBytes() throws {
@@ -87,6 +79,10 @@ final class ArtworkSafetyTests: XCTestCase {
             try Data(payload.utf8).write(to: path)
             XCTAssertNil(LocalArtwork.image(path.path), payload)
         }
+        // UTF-16 without a BOM can otherwise pass UTF-8 decoding as a string containing NULs.
+        let utf16 = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\"/>"
+        try XCTUnwrap(utf16.data(using: .utf16LittleEndian)).write(to: path)
+        XCTAssertNil(LocalArtwork.image(path.path))
     }
     func testEveryBundledIconStillDecodesThroughSafeLoader() throws {
         let root = try XCTUnwrap(BundledArtwork.directory).resolvingSymlinksInPath()

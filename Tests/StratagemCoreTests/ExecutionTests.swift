@@ -29,9 +29,17 @@ final class ExecutionTests: XCTestCase {
         try await Task.sleep(nanoseconds: 80_000_000); task.cancel()
         let r = try await task.value; XCTAssertTrue(r.cancelled); XCTAssertFalse(r.succeeded)
     }
-    func testOutputFloodIsBoundedAndDoesNotDeadlock() async throws {
+    func testContinuousOutputTimesOutWithoutDeadlock() async throws {
+        let start = Date()
         let r = try await CommandRunner().run(executable: "/usr/bin/yes", timeout: 0.2)
-        XCTAssertTrue(r.timedOut); XCTAssertTrue(r.truncated); XCTAssertLessThanOrEqual(r.stdout.utf8.count, 1_048_576)
+        XCTAssertTrue(r.timedOut); XCTAssertLessThanOrEqual(r.stdout.utf8.count, 1_048_576)
+        XCTAssertLessThan(Date().timeIntervalSince(start), 3)
+    }
+    func testOutputBeyondLimitIsTruncated() async throws {
+        // A fixed payload tests truncation independently of a shared runner's speed in 0.2 seconds.
+        let r = try await CommandRunner().run(executable: "/usr/bin/head", arguments: ["-c", "2097152", "/dev/zero"], timeout: 5)
+        XCTAssertTrue(r.succeeded); XCTAssertTrue(r.truncated)
+        XCTAssertEqual(r.stdout.utf8.count, 1_048_576)
     }
     func testOwnedProcessGroupIsTerminated() async throws {
         let products = Bundle(for: ExecutionTests.self).bundleURL.deletingLastPathComponent()

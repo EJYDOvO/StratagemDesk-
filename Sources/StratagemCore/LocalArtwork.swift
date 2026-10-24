@@ -86,7 +86,7 @@ private final class SVGArtworkCheck: NSObject, XMLParserDelegate {
     private var sawRoot = false
     static func accepts(_ data: Data) -> Bool {
         // Reject unsupported encodings and DTDs before invoking either XML or image parsers.
-        guard let text = String(data: data, encoding: .utf8),
+        guard let text = String(data: data, encoding: .utf8), !text.contains("\0"),
               text.range(of: "<!DOCTYPE|<!ENTITY", options: [.regularExpression, .caseInsensitive]) == nil else { return false }
         let check = SVGArtworkCheck(), parser = XMLParser(data: data)
         parser.shouldProcessNamespaces = true; parser.shouldResolveExternalEntities = false
