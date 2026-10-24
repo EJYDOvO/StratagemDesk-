@@ -12,6 +12,6 @@ The project MIT license does NOT apply to those materials. Game names, designs a
 - 6 SVG mappings: https://helldivers.wiki.gg/ image URLs in the pinned data. Individual image licensing remains unconfirmed.
 - Exact filenames, URLs, SHA-256 and per-entry MIT exclusions: `game-icons-sources.json` and `sources.json`. `LicenseRef-ThirdParty-Game-Content` is a local exclusion label, not a permission grant.
 
-This candidate remains private. This is an unofficial desktop command launcher. Attribution and private visibility do not themselves resolve upstream licensing questions. See the distribution's `THIRD_PARTY.md` for full scope.
+This is an unofficial desktop command launcher. Attribution does not itself resolve upstream licensing questions. See the distribution's `THIRD_PARTY.md` for full scope.
 
 The eight separate `desk.*.svg` icons are original MIT artwork; see `ORIGINAL-DESKTOP-LICENSE.txt`.

@@ -32,12 +32,22 @@ macOS 默认快捷键为 **Command + Option + S**，Windows 为 **Ctrl + Alt + S
 - macOS：`~/Library/Application Support/StratagemDesk-Public/`
 - Windows：`%LOCALAPPDATA%\StratagemDesk-Public\`
 
-操作以当前用户权限执行。审核前请检查脚本、参数和目标路径；敏感操作可开启日志隐藏。配置会保存执行参数，请勿将其当作密钥存储，也不要在分享配置时附带密码或令牌。更多说明见 [安全政策](SECURITY.md)。
+操作以当前用户权限执行。审核前请检查脚本、参数和目标路径；敏感操作可开启日志隐藏。配置会保存执行参数，请勿将其当作密钥存储，也不要在分享配置时附带密码或令牌。更多说明见 [安全政策](https://github.com/EJYDOvO/StratagemDesk-/security/policy)。
+
+## 源码构建
+
+macOS 安装 Xcode 后运行 `scripts/build.sh`，输出位于 `build/Release/`。
+
+Windows 安装 .NET 10 SDK 后运行：
+
+```sh
+dotnet publish Windows/StratagemDesk.App -c Release -r win-x64 --self-contained true -o build/windows-x64
+```
 
 ## 许可
 
-项目自有代码、8 个桌面示例及 `desk.*.svg` 原创图标使用 [MIT 许可证](LICENSE)。
+项目自有代码、8 个桌面示例及 `desk.*.svg` 原创图标使用 [MIT 许可证](https://github.com/EJYDOvO/StratagemDesk-/blob/main/LICENSE)。
 
-**游戏图标、115 条战备数据和上游原始文件不纳入项目 MIT 许可，也未被重新许可。** 其来源、原有条款及版权信息见 [第三方声明](THIRD_PARTY.md) 和 [游戏内容声明](Sources/StratagemCore/Artwork/GAME_CONTENT_NOTICE.md)。本项目为非官方工具，与游戏权利方无隶属或背书关系。
+**游戏图标、115 条战备数据和上游原始文件不纳入项目 MIT 许可，也未被重新许可。** 其来源、原有条款及版权信息见 [第三方声明](THIRD_PARTY.md) 和 [游戏内容声明](https://github.com/EJYDOvO/StratagemDesk-/blob/main/Sources/StratagemCore/Artwork/GAME_CONTENT_NOTICE.md)。本项目为非官方工具，与游戏权利方无隶属或背书关系。
 
-SharpVectors.Wpf、.NET 运行时及用户导入的素材保留各自适用的许可。Windows 使用说明见 [Windows README](Windows/README.md)。
+SharpVectors.Wpf、.NET 运行时及用户导入的素材保留各自适用的许可。Windows 的 PowerShell 操作用 `$args` 读取结构化参数；第三方运行时声明保存在安装包的 `licenses/` 目录。

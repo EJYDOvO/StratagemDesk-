@@ -1,4 +1,4 @@
-name: Private candidate provenance and secrets
+name: Provenance and secrets
 on:
   push:
     branches: [main]
@@ -13,12 +13,22 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
-      - name: Require private repository
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: test "$(gh api "repos/$GITHUB_REPOSITORY" --jq '.private')" = true
       - name: Mixed assets, license boundaries and history privacy
         run: python3 scripts/audit_public.py
+      - name: Reject tracked macOS backups
+        run: |
+          python3 - <<'PYTEST'
+          import os, pathlib, shutil, subprocess, tempfile
+          with tempfile.TemporaryDirectory() as temporary:
+              index = pathlib.Path(temporary) / 'index'
+              original = subprocess.check_output(['git', 'rev-parse', '--git-path', 'index'], text=True).strip()
+              shutil.copyfile(original, index)
+              environment = dict(os.environ, GIT_INDEX_FILE=str(index))
+              blob = subprocess.check_output(['git', 'hash-object', '-w', '--stdin'], input=b'{}').decode().strip()
+              subprocess.run(['git', 'update-index', '--add', '--cacheinfo', '100644', blob, 'configuration-backup-check.json'], env=environment, check=True)
+              result = subprocess.run(['python3', 'scripts/audit_public.py'], env=environment, text=True, capture_output=True)
+              assert result.returncode != 0 and 'Private configuration or backup is tracked' in result.stderr, result.stderr
+          PYTEST
       - name: Gitleaks full-history scan
         run: |
           mkdir -p build/public-audit

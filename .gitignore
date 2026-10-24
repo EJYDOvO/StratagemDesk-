@@ -14,3 +14,4 @@ xcuserdata/
 configuration.json
 last-run.json
 *.backup-*
+configuration-backup-*.json

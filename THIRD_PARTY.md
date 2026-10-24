@@ -1,6 +1,6 @@
 # Licensing scope and third-party content
 
-**The root MIT license covers project-owned code and original desktop demonstrations only. It does not cover bundled game catalog data, game icons, upstream files or third-party dependencies.** The repository remains private. Attribution and MIT exclusion do not create additional permission or establish readiness for public distribution.
+**The root MIT license covers project-owned code and original desktop demonstrations only. It does not cover bundled game catalog data, game icons, upstream files or third-party dependencies.** Attribution and MIT exclusion do not create additional permission or establish readiness for public distribution.
 
 ## Project-owned MIT content
 
@@ -34,7 +34,7 @@ The following content is **not licensed by this project's MIT license**:
 - Exact filenames, source URLs and SHA-256 hashes: `Artwork/game-icons-sources.json`. The mixed `Artwork/sources.json` marks each game entry `projectMitApplies: false`. The local `LicenseRef-ThirdParty-Game-Content` label is not a standard license or permission grant.
 - HELLDIVERS names, designs and artwork retain their respective game copyright/trademark holders' rights; SVG contributions retain their authors' applicable rights. This unofficial desktop command launcher claims no ownership or endorsement.
 
-Game data and images are bundled for offline use in this private candidate. No game screenshots or extracted fonts are included. Both application distributions include this document, `Artwork/NOTICE.txt`, `Artwork/GAME_CONTENT_NOTICE.md`, the original upstream license and provenance. Runtime image loading is local, without a downloader.
+Game data and images are bundled for offline use. No game screenshots or extracted fonts are included. Both application distributions include this document, `Artwork/NOTICE.txt`, `Artwork/GAME_CONTENT_NOTICE.md`, the original upstream license and provenance. Runtime image loading is local, without a downloader.
 
 ## Windows dependencies
 

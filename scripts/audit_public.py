@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Static provenance/privacy checks for a private candidate, not public-rights clearance."""
+"""Static provenance/privacy checks. Source attribution is not rights clearance."""
 import hashlib
 import json
 import pathlib
 import re
 import subprocess
 from collections import Counter
+from fnmatch import fnmatchcase
 from urllib.parse import urlparse
 
 root = pathlib.Path(__file__).resolve().parents[1]
@@ -20,7 +21,13 @@ files = git('ls-files').splitlines()
 assert (root / 'LICENSE').read_text().startswith('MIT License\n')
 assert not any(name.startswith(('ThirdParty/', 'docs/evidence/')) for name in files)
 assert not any(pathlib.Path(name).suffix.lower() in ('.png', '.jpg', '.jpeg', '.gif', '.zip', '.exe', '.dll', '.pfx', '.p12') for name in files)
-assert not any(pathlib.Path(name).name in ('configuration.json', 'last-run.json', '.env') for name in files)
+def private_configuration(path):
+    name = pathlib.PurePosixPath(path).name
+    return name in ('configuration.json', 'last-run.json', '.env') or fnmatchcase(name, 'configuration-backup-*.json') or '.backup-' in name
+assert not any(private_configuration(name) for name in files), 'Private configuration or backup is tracked'
+for sample in ('configuration.json', 'last-run.json', 'configuration-backup-check.json', 'configuration.json.backup-check'):
+    assert subprocess.run(['git', '-C', str(root), 'check-ignore', '--no-index', '-q', sample]).returncode == 0, 'Missing ignore rule: ' + sample
+
 resources = 'Sources/StratagemCore/Resources/'
 art = root / 'Sources/StratagemCore/Artwork'
 games = read(resources + 'builtins.json')
@@ -93,6 +100,7 @@ scanned = 0
 for line in git('rev-list', '--objects', '--all').splitlines():
     oid, _, path = line.partition(' ')
     if git('cat-file', '-t', oid).strip() != 'blob': continue
+    assert not private_configuration(path), 'Private configuration or backup in history: ' + path
     data = subprocess.check_output(['git', '-C', str(root), 'cat-file', 'blob', oid])
     assert not any(pattern.search(data) for pattern in patterns), 'Privacy/key pattern in history: ' + path
     assert not path.startswith(('ThirdParty/', 'Sources/StratagemCore/GameIcons/', 'docs/evidence/')), 'Excluded historical file: ' + path
@@ -100,8 +108,8 @@ for line in git('rev-list', '--objects', '--all').splitlines():
 report = {'passed': True, 'historyBlobsChecked': scanned, 'originalCatalogEntries': len(originals),
           'gameCatalogEntries': len(games), 'originalArtworkHashesChecked': 8, 'gameArtworkHashesChecked': 115,
           'projectLicense': 'MIT for project-owned content only', 'gameContentExcludedFromProjectMit': True,
-          'upstreamGameLicensingResolved': False, 'publicationApproved': False,
-          'scope': 'Private-candidate static privacy, provenance and license-boundary checks. Not rights clearance; Gitleaks runs separately.'}
+          'upstreamGameLicensingResolved': False, 'rightsClearanceEstablished': False,
+          'scope': 'Static privacy, provenance and license-boundary checks. Not rights clearance; Gitleaks runs separately.'}
 out = root / 'build/public-audit'; out.mkdir(parents=True, exist_ok=True)
 (out / 'source-audit.json').write_text(json.dumps(report, indent=2) + '\n')
 print(json.dumps(report))

@@ -1,4 +1,4 @@
-StratagemDesk Private Candidate — mixed artwork and data
+StratagemDesk — artwork and data notices
 
 8 original desk.* SVGs: Copyright (c) 2026 EJYDOvO, MIT.
 See ORIGINAL-DESKTOP-LICENSE.txt.
@@ -16,5 +16,5 @@ HELLDIVERS game content retains its respective owners' rights;
 SVG contributions retain their authors' applicable rights.
 See GAME_CONTENT_NOTICE.md, game-icons-sources.json, sources.json,
 game-data/sources.json and the unmodified game-data/StratagemZero-LICENSE.txt.
-Bundled for offline use in this private candidate. Unofficial project.
+Bundled for offline use. Unofficial project.
 Source attribution is not an additional permission grant.

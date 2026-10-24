@@ -12,7 +12,7 @@
     <Content Include="../../LICENSE" Link="LICENSE.txt" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="../../THIRD_PARTY.md" Link="THIRD_PARTY.md" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="../THIRD_PARTY.txt" Link="THIRD_PARTY.txt" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="../README.md" Link="README.md" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../README.md" Link="README.md" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="../../Sources/StratagemCore/Artwork/**/*" Link="Artwork/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>
