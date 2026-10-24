@@ -8,6 +8,17 @@ final class ArtworkSafetyTests: XCTestCase {
         let url = FileManager.default.temporaryDirectory.resolvingSymlinksInPath().appendingPathComponent(UUID().uuidString)
         try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
         addTeardownBlock { try? FileManager.default.removeItem(at: url) }
+        // Keep failing cloud paths diagnosable without weakening the actual loader assertions.
+        let probe = url.appendingPathComponent("probe.png")
+        try Data([1]).write(to: probe)
+        if LocalArtwork.read(probe.path, maximumBytes: 1) == nil {
+            var volume = statfs()
+            let volumeResult = statfs(probe.path, &volume)
+            let descriptor = open(probe.path, O_RDONLY | O_NONBLOCK | O_NOFOLLOW_ANY)
+            let openError = errno
+            if descriptor >= 0 { close(descriptor) }
+            print("Artwork fixture path=\(probe.path) resolved=\(probe.resolvingSymlinksInPath().path) statfs=\(volumeResult) flags=\(volume.f_flags) open=\(descriptor) errno=\(openError)")
+        }
         return url
     }
     func testReadsOnlyBoundedRegularLocalBytes() throws {

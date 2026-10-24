@@ -123,7 +123,7 @@ struct StratagemEditor: View {
                         HStack {
                             TextField("SF Symbol 名称或本地图片路径", text: $entry.icon)
                             Button("选择图片…") {
-                                let panel = NSOpenPanel(); panel.allowedContentTypes = [.png, .jpeg, .tiff, .pdf]
+                                let panel = NSOpenPanel(); panel.allowedContentTypes = [.png, .jpeg, .svg, .bmp]
                                 if panel.runModal() == .OK, let path = panel.url?.path { entry.icon = path }
                             }
                         }
