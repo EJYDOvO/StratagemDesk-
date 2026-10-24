@@ -3,6 +3,24 @@ import CryptoKit
 @testable import StratagemCore
 
 final class CoreTests: XCTestCase {
+    func testImportResetsFileArtworkWithoutChangingWorkflowReferences() throws {
+        let builtins = try BuiltinCatalog.load()
+        let original = try XCTUnwrap(builtins.first { $0.id == "desk.terminal" })
+        for path in ["/Volumes/shared/icon.svg", "/private/tmp/icon.png", "relative/icon.svg", "smb://example.invalid/icon.png", "C:\\icons\\icon.png"] {
+            var action = ActionDefinition(); action.approved = true
+            var custom = Stratagem(); custom.name = "Imported"; custom.icon = path
+            custom.enabled = true; custom.sequence = [.up, .right]; custom.steps = [WorkflowStep(actionID: action.id)]
+            var override = original; override.icon = path; override.enabled = true
+            var configuration = Configuration(); configuration.custom = [custom]
+            configuration.overrides[original.id] = override; configuration.actions = [action]
+            let imported = try ConfigurationStore.quarantinedImport(JSONEncoder().encode(configuration), preserving: AppSettings())
+            XCTAssertEqual(imported.custom[0].icon, "command.square", path)
+            XCTAssertEqual(imported.overrides[original.id]?.icon, original.icon, path)
+            XCTAssertEqual(imported.custom[0].sequence, [.up, .right])
+            XCTAssertEqual(imported.custom[0].steps, custom.steps)
+            XCTAssertFalse(imported.custom[0].enabled); XCTAssertFalse(imported.actions[0].approved)
+        }
+    }
     func testWindowsImportDiscardsForeignSettingsBeforeValidation() throws {
         var action = ActionDefinition(); action.approved = true
         var entry = item([.up]); entry.steps = [WorkflowStep(actionID: action.id)]
