@@ -1,5 +1,6 @@
 import AppKit
 import StratagemCore
+import Darwin
 
 /// Explicit custom images and installed packs take precedence over bundled artwork.
 @MainActor final class GameArtwork {
@@ -19,7 +20,12 @@ import StratagemCore
         #if DEBUG
         if CommandLine.arguments.contains("--bundled-artwork-only") { directories = [] }
         #endif
-        if let bundled = BundledArtwork.directory?.resolvingSymlinksInPath() { directories.append(bundled) }
+        // Only the installed bundle is trusted for canonicalization. Foundation can
+        // shorten /private/var to /var, which breaks strict reads after App Translocation.
+        if let bundled = BundledArtwork.directory, let physical = realpath(bundled.path, nil) {
+            directories.append(URL(fileURLWithPath: String(cString: physical), isDirectory: true))
+            free(physical)
+        }
         for directory in directories {
             if let data = LocalArtwork.read(directory.appendingPathComponent("index.json").path, maximumBytes: 1_000_000),
                let index = try? JSONDecoder().decode(Index.self, from: data) {

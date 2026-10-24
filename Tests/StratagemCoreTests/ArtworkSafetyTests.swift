@@ -13,6 +13,17 @@ final class ArtworkSafetyTests: XCTestCase {
         addTeardownBlock { try? FileManager.default.removeItem(at: url) }
         return url
     }
+    func testPhysicalTemporaryPathsRemainLoadable() throws {
+        let requested = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        try FileManager.default.createDirectory(at: requested, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: requested) }
+        let pointer = try XCTUnwrap(realpath(requested.path, nil))
+        defer { free(pointer) }
+        let physical = URL(fileURLWithPath: String(cString: pointer), isDirectory: true)
+        let file = physical.appendingPathComponent("image.png")
+        try Data([1, 2]).write(to: file)
+        XCTAssertEqual(LocalArtwork.read(file.path, maximumBytes: 2), Data([1, 2]))
+    }
     func testReadsOnlyBoundedRegularLocalBytes() throws {
         let root = try directory(), file = root.appendingPathComponent("image.png")
         try Data([1, 2, 3, 4]).write(to: file)
