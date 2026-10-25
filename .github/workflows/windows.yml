@@ -24,7 +24,14 @@ jobs:
         run: dotnet test Windows/StratagemDesk.Native.Tests -c Release --logger "trx;LogFileName=native.trx" --results-directory build/windows-tests
       - name: Publish Windows x64 application
         if: hashFiles('Windows/StratagemDesk.App/StratagemDesk.App.csproj') != ''
-        run: dotnet publish Windows/StratagemDesk.App -c Release -r win-x64 --self-contained true -o build/windows-x64
+        run: dotnet publish Windows/StratagemDesk.App -c Release -r win-x64 --self-contained true -p:CopyOutputSymbolsToPublishDirectory=false -o build/windows-x64
+      - name: Verify symbol-free publish and retained test symbols
+        shell: pwsh
+        run: |
+          $symbols = @(Get-ChildItem build/windows-x64 -Filter '*.pdb' -File -Recurse)
+          if ($symbols.Count -ne 0) { throw "Published debug symbols found: $($symbols.Name -join ', ')" }
+          $testSymbols = @(Get-ChildItem Windows -Filter 'StratagemDesk.*.Tests.pdb' -File -Recurse | Where-Object { $_.DirectoryName -like '*\bin\Release\*' })
+          if ($testSymbols.Count -lt 2) { throw 'Test debug symbols were not retained' }
       - name: WPF controller smoke
         if: hashFiles('Windows/StratagemDesk.App/StratagemDesk.App.csproj') != ''
         shell: pwsh
@@ -63,13 +70,19 @@ jobs:
             if (-not (Test-Path "build/windows-x64/Artwork/$notice")) { throw "Missing copyright notice: $notice" }
           }
           @{
-            version = '0.1.0'
+            version = '0.1.1'
             sourceCommit = $env:GITHUB_SHA
             runUrl = "https://github.com/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID"
             platform = 'win-x64'
             selfContained = $true
           } | ConvertTo-Json | Set-Content build/windows-x64/BUILD.json
           Compress-Archive -Path build/windows-x64/* -DestinationPath build/StratagemDeskPublic-windows-x64.zip
+          Add-Type -AssemblyName System.IO.Compression.ZipFile
+          $archive = [IO.Compression.ZipFile]::OpenRead((Join-Path $PWD 'build/StratagemDeskPublic-windows-x64.zip'))
+          try {
+            $symbols = @($archive.Entries | Where-Object { $_.FullName.EndsWith('.pdb', [StringComparison]::OrdinalIgnoreCase) })
+            if ($symbols.Count -ne 0) { throw 'Packaged ZIP contains debug symbols' }
+          } finally { $archive.Dispose() }
           $digest = (Get-FileHash build/StratagemDeskPublic-windows-x64.zip -Algorithm SHA256).Hash.ToLowerInvariant()
           "$digest  StratagemDeskPublic-windows-x64.zip" | Set-Content build/SHA256SUMS-windows.txt
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
